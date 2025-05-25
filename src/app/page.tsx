@@ -41,10 +41,10 @@ const Home = () => {
     threshold: 0.1,
   });
 
-  // const [partnersRef, partnersInView] = useInView({
-  //   triggerOnce: true,
-  //   threshold: 0.1,
-  // });
+  const [partnersRef, partnersInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const [ctaRef, ctaInView] = useInView({
     triggerOnce: true,
@@ -298,7 +298,7 @@ const Home = () => {
       </motion.div>
 
       {/* Partners Section */}
-      {/* <motion.div ref={partnersRef} className="py-16 bg-gray-50">
+      <motion.div ref={partnersRef} className="py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div
             custom={0}
@@ -332,7 +332,7 @@ const Home = () => {
             ))}
           </motion.div>
         </div>
-      </motion.div> */}
+      </motion.div>
 
       {/* Testimonials Section */}
       <Testimonials />
