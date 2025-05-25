@@ -12,7 +12,7 @@ import {
   FaChartLine,
   FaShieldAlt,
 } from "react-icons/fa";
-import Testimonials from "@/components/Testimonials";
+// import Testimonials from "@/components/Testimonials";
 
 const Home = () => {
   const containerRef = useRef(null);
@@ -335,7 +335,7 @@ const Home = () => {
       </motion.div> */}
 
       {/* Testimonials Section */}
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       {/* CTA Section */}
       <motion.div

@@ -26,13 +26,6 @@ const Footer = () => {
     { name: "Contact", href: "/contact" },
   ];
 
-  const productCategories = [
-    { name: "Industrial Chemicals", href: "/products" },
-    { name: "Chemical Additives", href: "/products" },
-    { name: "Raw Materials", href: "/products" },
-    { name: "Specialty Products", href: "/products" },
-  ];
-
   return (
     <footer className="bg-[#001532] text-white pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -46,7 +39,6 @@ const Footer = () => {
                 width={100}
                 height={100}
                 className="h-10 w-auto"
-                // style={{ filter: "brightness(0) invert(1)" }}
               />
               <span className="text-xl sm:text-2xl font-heading font-bold text-white">
                 Trayan Corporation
@@ -101,10 +93,10 @@ const Footer = () => {
         </div>
 
         {/* Middle section with links */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-10 border-b border-gray-800">
-          <div>
-            <h3 className="text-lg font-bold mb-4">Navigation</h3>
-            <ul className="space-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 py-10 border-b border-gray-800">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-lg font-bold mb-4 text-white">Navigation</h3>
+            <ul className="space-y-2 w-full max-w-xs">
               {navigation.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -132,40 +124,23 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-4">Products</h3>
-            <ul className="space-y-2">
-              {productCategories.map((category) => (
-                <li key={category.name}>
-                  <Link
-                    href={category.href}
-                    className="text-gray-400 hover:text-primary-300 transition-colors duration-300 flex items-center group"
-                  >
-                    <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      →
-                    </span>
-                    {category.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-bold mb-4">Contact Information</h3>
-            <ul className="space-y-4">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-lg font-bold mb-4 text-white">
+              Contact Information
+            </h3>
+            <ul className="space-y-4 w-full max-w-xs">
               <li className="flex items-start">
-                <PhoneIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
+                <PhoneIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400">
                   +91 87809 98478 / +91 91063 64185
                 </span>
               </li>
               <li className="flex items-start">
-                <EnvelopeIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
+                <EnvelopeIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400">info@trayancorp.com</span>
               </li>
               <li className="flex items-start">
-                <MapPinIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
+                <MapPinIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400">
                   310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota,
                   Ahmedabad, Gujarat 382481
@@ -174,20 +149,22 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold mb-4">Business Hours</h3>
-            <ul className="space-y-2 text-gray-400">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-lg font-bold mb-4 text-white">
+              Business Hours
+            </h3>
+            <ul className="space-y-2 text-gray-400 w-full max-w-xs">
               <li className="flex justify-between">
                 <span>Monday - Friday:</span>
-                <span>9:00 AM - 6:00 PM</span>
+                <span className="text-right ml-4">9:00 AM - 6:00 PM</span>
               </li>
               <li className="flex justify-between">
                 <span>Saturday:</span>
-                <span>10:00 AM - 4:00 PM</span>
+                <span className="text-right ml-4">10:00 AM - 4:00 PM</span>
               </li>
               <li className="flex justify-between">
                 <span>Sunday:</span>
-                <span>Closed</span>
+                <span className="text-right ml-4">Closed</span>
               </li>
             </ul>
           </div>
