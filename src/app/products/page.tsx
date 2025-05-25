@@ -7,32 +7,33 @@ import ProductShowcase from "@/components/ProductShowcase";
 const Products = () => {
   return (
     <div>
-      <div className="bg-primary-800 text-white py-16 md:py-24">
-        <div className="container mx-auto px-6 max-w-7xl">
+      <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white py-10 md:py-24">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
+        <div className="container mx-auto mt-12 md:mt-5 px-6 max-w-7xl relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 font-heading">
+            <h1 className="text-3xl md:text-5xl mt-5 md:mt-0 font-bold mb-6 font-heading">
               Chemical Products <br />
               <span className="text-primary-300">For Every Industry</span>
             </h1>
-            <p className="text-lg text-gray-200 mb-8">
+            <p className="text-lg text-gray-200 mb-4">
               Discover our comprehensive range of high-quality chemical products
               designed to meet the demands of modern industries. From industrial
               solvents to specialized additives, we provide solutions tailored
               to your specific needs.
             </p>
-            <div className="flex flex-wrap gap-4">
+            {/* <div className="flex flex-wrap gap-4">
               <button className="bg-white text-primary-700 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300">
                 Request Custom Quote
               </button>
               <button className="border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-primary-700 transition-colors duration-300">
                 View Certifications
               </button>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>

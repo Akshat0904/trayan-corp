@@ -10,6 +10,7 @@ import Logo from "../../../public/images/logos/logo.svg";
 
 const navigation = [
   { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
   { name: "Products", href: "/products" },
   { name: "Business", href: "/business" },
   { name: "Contact", href: "/contact" },
@@ -38,9 +39,7 @@ const Header = () => {
     <>
       <header
         className={`fixed w-full z-[99] transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-sm shadow-md py-2"
-            : "bg-white/95 backdrop-blur-sm shadow-sm py-4"
+          scrolled ? "bg-white shadow-md py-2" : "bg-white shadow-sm py-4"
         }`}
       >
         <nav
@@ -61,22 +60,23 @@ const Header = () => {
                   width={100}
                   height={100}
                   className="h-10 w-auto"
+                  style={{ filter: "none" }}
                 />
               </motion.div>
               <motion.span
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-2xl font-heading font-bold text-primary-700"
+                className="text-2xl font-heading font-bold text-primary-600"
               >
-                Trayan Corp
+                Trayan Corporation
               </motion.span>
             </Link>
           </div>
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-primary-600 hover:bg-primary-50"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">
@@ -101,19 +101,19 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
-                    className="relative text-sm font-semibold leading-6 text-gray-900 transition-all duration-200 hover:text-primary-500 group"
+                    className="relative text-sm font-semibold leading-6 text-gray-800 transition-all duration-200 hover:text-primary-600 group"
                   >
                     {item.name}
                     {isActive && (
                       <motion.span
                         layoutId="activeIndicator"
-                        className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500"
+                        className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-600"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.3 }}
                       />
                     )}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </motion.div>
               );
@@ -151,7 +151,7 @@ const Header = () => {
 
             {/* Menu links container */}
             <motion.div
-              className="lg:hidden fixed top-0 inset-x-0 z-[90] flex flex-col bg-white"
+              className="lg:hidden fixed top-0 inset-x-0 z-[90] flex flex-col bg-white shadow-md"
               style={{
                 top: scrolled ? "calc(56px)" : "calc(72px)",
                 maxHeight: "calc(100vh - 72px)",
@@ -173,8 +173,8 @@ const Header = () => {
                       className={`block px-6 py-4 text-base font-semibold ${
                         isActive
                           ? "text-primary-600 bg-primary-50"
-                          : "text-gray-900"
-                      } hover:bg-gray-50 border-b border-gray-100`}
+                          : "text-gray-800"
+                      } hover:bg-primary-50 border-b border-gray-100`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}

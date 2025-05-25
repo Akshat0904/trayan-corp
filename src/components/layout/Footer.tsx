@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10 border-b border-gray-800">
           <div className="col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-primary-300 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-primary-400 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">T</span>
               </div>
               <span className="text-2xl font-heading font-bold text-white">
@@ -57,7 +57,7 @@ const Footer = () => {
                   <motion.a
                     key={index}
                     href="#"
-                    whileHover={{ y: -3, color: "#38bdf8" }}
+                    whileHover={{ y: -3, color: "#214079" }}
                     className="text-gray-400 hover:text-primary-400 transition-colors duration-300"
                   >
                     <Icon className="h-5 w-5" />

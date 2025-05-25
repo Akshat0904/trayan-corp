@@ -9,17 +9,17 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e",
-          950: "#082f49",
+          50: "#eef3fa",
+          100: "#d9e2f5",
+          200: "#b3c5eb",
+          300: "#8da8e0",
+          400: "#667bd6",
+          500: "#4054cc",
+          600: "#214079",
+          700: "#1a335f",
+          800: "#142546",
+          900: "#0d172d",
+          950: "#070b14",
         },
         secondary: {
           50: "#f5f3ff",
@@ -55,7 +55,7 @@ module.exports = {
       boxShadow: {
         soft: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         hard: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-        glow: "0 0 15px rgba(14, 165, 233, 0.4)",
+        glow: "0 0 15px rgba(33, 64, 121, 0.4)",
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -71,7 +71,9 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "cta-pattern": "url('/images/cta-bg.jpg')",
         "hero-pattern":
-          "linear-gradient(to right, rgba(8, 47, 73, 0.8), rgba(8, 47, 73, 0.6)), url('/images/hero-bg.jpg')",
+          "linear-gradient(to right, rgba(33, 64, 121, 0.8), rgba(33, 64, 121, 0.6)), url('/images/hero-bg.jpg')",
+        "grid-primary-200":
+          "linear-gradient(to right, #b3c5eb 1px, transparent 1px), linear-gradient(to bottom, #b3c5eb 1px, transparent 1px)",
       },
     },
   },

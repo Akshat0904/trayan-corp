@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { useInView } from "react-intersection-observer";
@@ -16,13 +16,6 @@ import Testimonials from "@/components/Testimonials";
 
 const Home = () => {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   const fadeInUpVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -61,65 +54,85 @@ const Home = () => {
   return (
     <div className="relative" ref={containerRef}>
       {/* Hero Section */}
-      <div className="relative h-screen">
-        <motion.div
-          style={{ y, opacity }}
-          className="absolute inset-0 bg-hero-pattern bg-cover bg-center"
-        />
+      <div className="relative min-h-[90vh] flex items-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{
+            backgroundImage: 'url("/images/jason-jeandron.jpg")',
+            backgroundPosition: "center 25%",
+            backgroundSize: "cover",
+            height: "100%",
+            width: "100%",
+            objectFit: "cover",
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-primary-900/75 z-0"></div>
 
-        <div className="relative h-full flex items-center justify-center text-center">
+        <div className="relative container mx-auto px-6 z-10 mt-10">
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="max-w-3xl px-6 z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto text-center"
           >
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="mb-4"
+            >
+              <span className="inline-block px-4 py-1 rounded-full bg-primary-900/40 text-white text-sm font-medium mb-6">
+                Chemical Solutions Provider
+              </span>
+            </motion.div>
+
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight text-white"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
             >
-              <span className="block">Leading in Chemical</span>
-              <span className="relative block">
-                <span className="bg-gradient-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent">
-                  Solutions
-                </span>
-                <motion.span
-                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1 bg-primary-400"
-                  initial={{ width: 0 }}
-                  animate={{ width: "70%" }}
-                  transition={{ delay: 1.2, duration: 0.8 }}
-                />
+              <span className="block mb-2">Leading in</span>
+              <span className="relative inline-block">
+                <span className="text-primary-300">Chemical Solutions</span>
               </span>
             </motion.h1>
+
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent max-w-xs mx-auto mb-8"
+            />
+
             <motion.p
-              className="mt-8 text-xl leading-8 text-gray-300"
+              className="text-lg md:text-xl text-white mb-10 max-w-2xl mx-auto py-3 px-4 rounded-lg "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.5 }}
+              transition={{ delay: 0.7, duration: 0.7 }}
             >
               Your trusted partner in chemical trading and manufacturing
               solutions for the global industry
             </motion.p>
+
             <motion.div
-              className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4"
+              className="flex flex-wrap items-center justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
+              transition={{ delay: 0.9, duration: 0.5 }}
             >
               <Link
                 href="/products"
-                className="rounded-full bg-primary-600 px-5 py-3 text-base font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-300"
+                className="rounded-md bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-xl hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-300 border border-primary-500/50 h-12 flex items-center"
               >
                 Explore Products
               </Link>
               <Link
                 href="/contact"
-                className="text-base font-semibold leading-6 text-white hover:text-primary-300 transition-colors duration-300 group flex items-center"
+                className="rounded-md border-2 border-white/80 bg-primary-800/50 px-6 py-3 text-base font-semibold text-white hover:bg-primary-700/60 hover:border-white transition-colors duration-300 group flex items-center shadow-xl h-12"
               >
                 Contact Us
-                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
               </Link>
@@ -128,22 +141,23 @@ const Home = () => {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          animate={{
-            y: [0, 10, 0],
-            opacity: [1, 0.5, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatType: "loop",
-          }}
-        >
-          <div className="w-8 h-12 rounded-full border-2 border-white flex items-start justify-center p-1">
-            <div className="w-1.5 h-3 bg-white rounded-full" />
-          </div>
-        </motion.div>
+        <div className="absolute bottom-10 left-0 w-full z-20 flex justify-center">
+          <motion.div
+            animate={{
+              y: [0, 10, 0],
+              opacity: [1, 0.6, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "loop",
+            }}
+          >
+            <div className="w-8 h-12 rounded-full border-2 border-white flex items-start justify-center p-1 bg-primary-900/50">
+              <div className="w-1.5 h-3 bg-white rounded-full" />
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Stats Section */}
@@ -157,7 +171,7 @@ const Home = () => {
               animate={statsInView ? "visible" : "hidden"}
               className="text-base font-semibold leading-7 text-primary-600"
             >
-              Our Global Impact
+              Our Global And Domestic Impact
             </motion.h2>
             <motion.p
               custom={1}
@@ -166,20 +180,24 @@ const Home = () => {
               animate={statsInView ? "visible" : "hidden"}
               className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
             >
-              Trusted by companies worldwide
+              Trusted by companies worldwide and domestically
             </motion.p>
           </div>
 
           <div className="mx-auto max-w-7xl grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { number: "20+", label: "Years Experience", icon: FaChartLine },
-              { number: "5000+", label: "Products Delivered", icon: FaFlask },
+              { number: "5+", label: "Years Experience", icon: FaChartLine },
+              { number: "300+", label: "Products Delivered", icon: FaFlask },
               {
-                number: "50+",
+                number: "10+",
                 label: "Countries Reached",
                 icon: FaGlobeAmericas,
               },
-              { number: "300+", label: "Global Partners", icon: FaIndustry },
+              {
+                number: "200+",
+                label: "Global And Domestic Partners",
+                icon: FaIndustry,
+              },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -370,21 +388,21 @@ const features = [
     description:
       "We maintain the highest standards in chemical quality and safety, with rigorous testing and certification processes to ensure consistent product excellence.",
     icon: FaShieldAlt,
-    href: "/about#quality",
+    href: "/about",
   },
   {
-    name: "Global Network",
+    name: "Global and Domestic Network",
     description:
-      "Our extensive network of suppliers and clients worldwide enables us to provide reliable supply chains and competitive pricing for all your chemical needs.",
+      "Our extensive network of suppliers and clients worldwide and domestically enables us to provide reliable supply chains and competitive pricing for all your chemical needs.",
     icon: FaGlobeAmericas,
-    href: "/about#network",
+    href: "/about",
   },
   {
     name: "Expert Support",
     description:
       "Our dedicated team of chemical experts provides personalized consultation and technical assistance to help you find the perfect solution for your requirements.",
     icon: FaUsers,
-    href: "/about#support",
+    href: "/about",
   },
 ];
 
