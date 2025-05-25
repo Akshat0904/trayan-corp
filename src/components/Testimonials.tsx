@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa";
 
@@ -46,21 +46,15 @@ const testimonials: Testimonial[] = [
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const testimonialVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 500 : -500,
-      opacity: 0,
-    }),
-  };
+  // Update container height when testimonial changes
+  useEffect(() => {
+    // Keep reference to container for transition
+    if (containerRef.current) {
+      // This ensures the container properly mounts with ref
+    }
+  }, [currentIndex]);
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
@@ -81,64 +75,140 @@ const Testimonials = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Animation variants
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+    }),
+  };
+
   return (
-    <div className="bg-gray-50 py-20">
+    <section className="bg-gray-50 py-16 sm:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-base font-semibold leading-7 text-primary-600">
             Testimonials
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-heading">
+          <h3 className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900 font-heading">
             What Our Clients Say
-          </p>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+          </h3>
+          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-gray-600">
             Discover why leading companies around the world trust Trayan
             Corporation for their chemical needs.
           </p>
         </div>
 
-        <div className="relative mx-auto max-w-4xl h-96 overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={testimonialVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
-              }}
-              className="absolute w-full h-full px-4"
-            >
-              <div className="bg-white rounded-md shadow-soft p-8 md:p-10 h-full flex flex-col justify-between">
-                <div>
-                  <FaQuoteLeft className="text-primary-200 h-10 w-10 mb-4" />
-                  <p className="text-lg md:text-xl text-gray-700 mb-6">
-                    &quot;{testimonials[currentIndex].quote}&quot;
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 h-14 w-14 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
-                    {testimonials[currentIndex].name.charAt(0)}
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="text-lg font-semibold text-gray-900">
-                      {testimonials[currentIndex].name}
-                    </h4>
-                    <p className="text-gray-600">
-                      {testimonials[currentIndex].role},{" "}
-                      {testimonials[currentIndex].company}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+        <div className="max-w-lg mx-auto md:max-w-2xl lg:max-w-3xl relative">
+          <div className="relative">
+            {/* Navigation arrows */}
+            <div className="absolute inset-0 flex items-center justify-between pointer-events-none z-10">
+              <button
+                onClick={() => paginate(-1)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-600 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 -ml-3 sm:-ml-5"
+                aria-label="Previous testimonial"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 sm:h-5 sm:w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => paginate(1)}
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-600 pointer-events-auto focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 -mr-3 sm:-mr-5"
+                aria-label="Next testimonial"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 sm:h-5 sm:w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
 
-          {/* Navigation Buttons */}
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-2">
+            {/* Testimonial Card */}
+            <div
+              className="relative overflow-hidden"
+              style={{ height: "320px" }}
+            >
+              <AnimatePresence
+                mode="popLayout"
+                initial={false}
+                custom={direction}
+              >
+                <motion.div
+                  ref={containerRef}
+                  key={currentIndex}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 },
+                  }}
+                  className="bg-white rounded-lg shadow-md absolute top-0 left-0 right-0"
+                >
+                  <div className="p-6 sm:p-8">
+                    <div className="mb-6">
+                      <FaQuoteLeft className="text-blue-200 h-6 w-6 sm:h-8 sm:w-8 mb-4" />
+                      <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                        &quot;{testimonials[currentIndex].quote}&quot;
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-gray-100 flex flex-col items-center text-center">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-200 flex items-center justify-center mb-2">
+                        <span className="text-gray-600 text-sm sm:text-base font-medium">
+                          {testimonials[currentIndex].name.charAt(0)}
+                        </span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base">
+                          {testimonials[currentIndex].name}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                          {testimonials[currentIndex].role},{" "}
+                          {testimonials[currentIndex].company}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Pagination dots */}
+          <div className="flex justify-center space-x-2 mt-6">
             {testimonials.map((_, index) => (
               <button
                 key={index}
@@ -146,61 +216,16 @@ const Testimonials = () => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`h-2 w-2 md:h-3 md:w-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index
-                    ? "bg-primary-600 w-6 md:w-8"
-                    : "bg-gray-300"
+                className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                  currentIndex === index ? "bg-primary-600 w-6" : "bg-gray-300"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
           </div>
-
-          {/* Arrow buttons */}
-          <button
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300"
-            onClick={() => paginate(-1)}
-            aria-label="Previous testimonial"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-
-          <button
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300"
-            onClick={() => paginate(1)}
-            aria-label="Next testimonial"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

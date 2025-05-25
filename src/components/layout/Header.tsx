@@ -47,7 +47,10 @@ const Header = () => {
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+            <Link
+              href="/"
+              className="-m-1.5 p-1.5 flex items-center gap-1 sm:gap-2"
+            >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -59,7 +62,7 @@ const Header = () => {
                   alt="Trayan Corp Logo"
                   width={100}
                   height={100}
-                  className="h-10 w-auto"
+                  className="h-8 sm:h-10 w-auto"
                   style={{ filter: "none" }}
                 />
               </motion.div>
@@ -67,7 +70,7 @@ const Header = () => {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-2xl font-heading font-bold text-primary-600"
+                className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-primary-600 truncate"
               >
                 Trayan Corporation
               </motion.span>

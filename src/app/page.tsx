@@ -68,7 +68,7 @@ const Home = () => {
         ></div>
         <div className="absolute inset-0 bg-primary-900/75 z-0"></div>
 
-        <div className="relative container mx-auto px-6 z-10 mt-10">
+        <div className="relative container mx-auto px-4 sm:px-6 z-10 mt-10">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,20 +79,20 @@ const Home = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="mb-4"
+              className="mb-3 sm:mb-4"
             >
-              <span className="inline-block px-4 py-1 rounded-full bg-primary-900/40 text-white text-sm font-medium mb-6">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary-900/40 text-white text-xs sm:text-sm font-medium mb-4 sm:mb-6">
                 Chemical Solutions Provider
               </span>
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold tracking-tight text-white mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.7 }}
             >
-              <span className="block mb-2">Leading in</span>
+              <span className="block mb-1 sm:mb-2">Leading in</span>
               <span className="relative inline-block">
                 <span className="text-primary-300">Chemical Solutions</span>
               </span>
@@ -102,11 +102,11 @@ const Home = () => {
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent max-w-xs mx-auto mb-8"
+              className="h-px bg-gradient-to-r from-transparent via-primary-400 to-transparent max-w-xs mx-auto mb-6 sm:mb-8"
             />
 
             <motion.p
-              className="text-lg md:text-xl text-white mb-10 max-w-2xl mx-auto py-3 px-4 rounded-lg "
+              className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-10 max-w-2xl mx-auto py-2 sm:py-3 px-3 sm:px-4 rounded-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.7 }}
@@ -116,20 +116,20 @@ const Home = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap items-center justify-center gap-4"
+              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.5 }}
             >
               <Link
                 href="/products"
-                className="rounded-md bg-primary-600 px-6 py-3 text-base font-semibold text-white shadow-xl hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-300 border border-primary-500/50 h-12 flex items-center"
+                className="rounded-md bg-primary-600 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-xl hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-all duration-300 border border-primary-500/50 h-10 sm:h-12 flex items-center"
               >
                 Explore Products
               </Link>
               <Link
                 href="/contact"
-                className="rounded-md border-2 border-white/80 bg-primary-800/50 px-6 py-3 text-base font-semibold text-white hover:bg-primary-700/60 hover:border-white transition-colors duration-300 group flex items-center shadow-xl h-12"
+                className="rounded-md border-2 border-white/80 bg-primary-800/50 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold text-white hover:bg-primary-700/60 hover:border-white transition-colors duration-300 group flex items-center shadow-xl h-10 sm:h-12"
               >
                 Contact Us
                 <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -141,7 +141,7 @@ const Home = () => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-0 w-full z-20 flex justify-center">
+        <div className="absolute bottom-5 sm:bottom-10 left-0 w-full z-20 flex justify-center">
           <motion.div
             animate={{
               y: [0, 10, 0],
@@ -153,8 +153,8 @@ const Home = () => {
               repeatType: "loop",
             }}
           >
-            <div className="w-8 h-12 rounded-full border-2 border-white flex items-start justify-center p-1 bg-primary-900/50">
-              <div className="w-1.5 h-3 bg-white rounded-full" />
+            <div className="w-6 h-10 sm:w-8 sm:h-12 rounded-full border-2 border-white flex items-start justify-center p-1 bg-primary-900/60">
+              <div className="w-1 h-2 sm:w-1.5 sm:h-3 bg-white rounded-full" />
             </div>
           </motion.div>
         </div>

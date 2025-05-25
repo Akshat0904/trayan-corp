@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   PhoneIcon,
@@ -14,42 +15,46 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+import Logo from "../../../public/images/logos/logo-white.svg";
 
 const Footer = () => {
-  const quickLinks = [
-    { name: "About Us", href: "/about" },
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Products", href: "/products" },
-    { name: "Business Solutions", href: "/business" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Certifications", href: "/certifications" },
+    { name: "Business", href: "/business" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const productCategories = [
-    { name: "Industrial Chemicals", href: "/products#industrial" },
-    { name: "Chemical Additives", href: "/products#additives" },
-    { name: "Raw Materials", href: "/products#raw-materials" },
-    { name: "Specialty Products", href: "/products#specialty" },
-    { name: "Custom Solutions", href: "/products#custom" },
+    { name: "Industrial Chemicals", href: "/products" },
+    { name: "Chemical Additives", href: "/products" },
+    { name: "Raw Materials", href: "/products" },
+    { name: "Specialty Products", href: "/products" },
   ];
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-[#001532] text-white pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Top section with logo and newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10 border-b border-gray-800">
           <div className="col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-primary-400 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">T</span>
-              </div>
-              <span className="text-2xl font-heading font-bold text-white">
-                Trayan Corp
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <Image
+                src={Logo}
+                alt="Trayan Corp Logo"
+                width={100}
+                height={100}
+                className="h-10 w-auto"
+                // style={{ filter: "brightness(0) invert(1)" }}
+              />
+              <span className="text-xl sm:text-2xl font-heading font-bold text-white">
+                Trayan Corporation
               </span>
             </Link>
             <p className="text-gray-400 mb-6">
               Your trusted partner in chemical trading and manufacturing
-              solutions. With decades of experience, we deliver quality products
-              globally.
+              solutions for the global industry.
             </p>
             <div className="flex space-x-4">
               {[FaFacebook, FaTwitter, FaLinkedinIn, FaInstagram].map(
@@ -98,9 +103,9 @@ const Footer = () => {
         {/* Middle section with links */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-10 border-b border-gray-800">
           <div>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold mb-4">Navigation</h3>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {navigation.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -113,6 +118,17 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="#"
+                  className="text-gray-400 hover:text-primary-300 transition-colors duration-300 flex items-center group"
+                >
+                  <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    →
+                  </span>
+                  Get a Quote
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -140,7 +156,9 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <PhoneIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
-                <span className="text-gray-400">+1 (234) 567-890</span>
+                <span className="text-gray-400">
+                  +91 87809 98478 / +91 91063 64185
+                </span>
               </li>
               <li className="flex items-start">
                 <EnvelopeIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
@@ -149,9 +167,8 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPinIcon className="h-5 w-5 text-primary-400 mr-3 mt-0.5" />
                 <span className="text-gray-400">
-                  123 Chemical Street, Industrial Zone,
-                  <br />
-                  City, Country
+                  310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota,
+                  Ahmedabad, Gujarat 382481
                 </span>
               </li>
             </ul>
@@ -196,13 +213,6 @@ const Footer = () => {
                 className="hover:text-white transition-colors duration-300"
               >
                 Terms of Service
-              </Link>
-              {" • "}
-              <Link
-                href="/sitemap"
-                className="hover:text-white transition-colors duration-300"
-              >
-                Sitemap
               </Link>
             </p>
           </div>
