@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   title: "Trayan Corporation - Chemical Trading Company",
   description:
     "Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions",
+  icons: {
+    icon: [
+      { url: "/images/logos/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/images/logos/logo.svg",
+    shortcut: "/images/logos/logo.svg",
+  },
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
