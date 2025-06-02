@@ -7,10 +7,44 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   return (
     <div>
+      <SEO
+        title="Contact Us | Trayan Corporation"
+        description="Get in touch with Trayan Corporation for inquiries about our chemical products and services. We're here to help with your chemical trading needs."
+        canonical="/contact"
+        structuredData={{
+          type: "Organization",
+          data: {
+            name: "Trayan Corporation",
+            url: "https://trayancorp.com",
+            logo: "https://trayancorp.com/images/logos/logo.svg",
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: "+91 87809 98478",
+                contactType: "customer service",
+              },
+              {
+                "@type": "ContactPoint",
+                telephone: "+91 91063 64185",
+                contactType: "customer service",
+              },
+            ],
+            sameAs: [
+              "https://www.facebook.com/trayancorp",
+              "https://www.linkedin.com/company/trayan-corporation",
+              "https://twitter.com/trayancorp",
+            ],
+            description:
+              "Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions.",
+          },
+        }}
+      />
+
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>

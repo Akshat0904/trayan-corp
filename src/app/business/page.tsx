@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const businessAreas = [
   {
@@ -32,6 +33,31 @@ const businessAreas = [
 const Business = () => {
   return (
     <div>
+      <SEO
+        title="Business Areas | Trayan Corporation"
+        description="Explore our comprehensive chemical business areas including trading, manufacturing solutions, technical support, and quality control services."
+        canonical="/business"
+        structuredData={{
+          type: "BreadcrumbList",
+          data: {
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://trayancorp.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Business Areas",
+                item: "https://trayancorp.com/business",
+              },
+            ],
+          },
+        }}
+      />
+
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>

@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaBuilding, FaFlask, FaTruck, FaUserTie } from "react-icons/fa";
+import SEO from "@/components/SEO";
 
 const AboutPage = () => {
   // Animation variants
@@ -45,6 +46,31 @@ const AboutPage = () => {
 
   return (
     <div className="bg-white">
+      <SEO
+        title="About Trayan Corporation | Your Chemical Trading Partner"
+        description="Learn about Trayan Corporation - your trusted partner in chemical trading and manufacturing with years of experience serving industries worldwide."
+        canonical="/about"
+        structuredData={{
+          type: "BreadcrumbList",
+          data: {
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://trayancorp.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "About Us",
+                item: "https://trayancorp.com/about",
+              },
+            ],
+          },
+        }}
+      />
+
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>

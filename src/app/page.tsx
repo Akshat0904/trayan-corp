@@ -12,6 +12,7 @@ import {
   FaChartLine,
   FaShieldAlt,
 } from "react-icons/fa";
+import SEO from "@/components/SEO";
 // import Testimonials from "@/components/Testimonials";
 
 const Home = () => {
@@ -53,6 +54,40 @@ const Home = () => {
 
   return (
     <div className="relative" ref={containerRef}>
+      <SEO
+        title="Trayan Corporation - Chemical Trading Company"
+        description="Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions. We provide high-quality chemicals for various industries."
+        canonical="/"
+        pageType="website"
+        structuredData={{
+          type: "Organization",
+          data: {
+            name: "Trayan Corporation",
+            url: "https://trayancorp.com",
+            logo: "https://trayancorp.com/images/logos/logo.svg",
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: "+91 87809 98478",
+                contactType: "customer service",
+              },
+              {
+                "@type": "ContactPoint",
+                telephone: "+91 91063 64185",
+                contactType: "customer service",
+              },
+            ],
+            sameAs: [
+              "https://www.facebook.com/trayancorp",
+              "https://www.linkedin.com/company/trayan-corporation",
+              "https://twitter.com/trayancorp",
+            ],
+            description:
+              "Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions.",
+          },
+        }}
+      />
+
       {/* Hero Section */}
       <div className="relative min-h-[90vh] flex items-center">
         <div

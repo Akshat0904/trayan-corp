@@ -3,10 +3,36 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ProductShowcase from "@/components/ProductShowcase";
+import SEO from "@/components/SEO";
 
 const Products = () => {
   return (
     <div>
+      <SEO
+        title="Chemical Products | Trayan Corporation"
+        description="Explore our comprehensive range of high-quality chemical products for every industry. From industrial solvents to specialized additives, find the perfect solution for your needs."
+        canonical="/products"
+        structuredData={{
+          type: "BreadcrumbList",
+          data: {
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://trayancorp.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Products",
+                item: "https://trayancorp.com/products",
+              },
+            ],
+          },
+        }}
+      />
+
       <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white py-10 md:py-24">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
         <div className="container mx-auto mt-12 md:mt-5 px-6 max-w-7xl relative">
