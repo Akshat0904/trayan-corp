@@ -15,8 +15,10 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://trayancorp.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trayancorp.com"),
+  metadataBase: new URL(siteUrl),
   title: "Trayan Corporation - Chemical Trading Company",
   description:
     "Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions. We provide high-quality chemicals for various industries.",
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
     title: "Trayan Corporation - Chemical Trading Company",
     description:
       "Your trusted partner in chemical trading and manufacturing solutions.",
-    url: "https://trayancorp.com",
+    url: siteUrl,
     siteName: "Trayan Corporation",
     locale: "en_US",
     type: "website",
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
     shortcut: "/images/logos/logo.svg",
   },
   alternates: {
-    canonical: "https://trayancorp.com",
+    canonical: siteUrl,
   },
 };
 

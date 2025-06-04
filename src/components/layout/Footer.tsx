@@ -110,17 +110,6 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-primary-300 transition-colors duration-300 flex items-center group"
-                >
-                  <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    →
-                  </span>
-                  Get a Quote
-                </Link>
-              </li>
             </ul>
           </div>
 
