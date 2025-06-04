@@ -2,5 +2,9 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow Googlebot
+User-agent: Googlebot
+Allow: /
+
 # Sitemap location
 Sitemap: https://trayancorp.com/sitemap.xml 

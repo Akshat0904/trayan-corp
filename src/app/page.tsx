@@ -88,6 +88,64 @@ const Home = () => {
         }}
       />
 
+      {/* Additional Local Business Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "https://trayancorp.com",
+            name: "Trayan Corporation",
+            description:
+              "Chemical trading and manufacturing company providing high-quality solutions for various industries",
+            url: "https://trayancorp.com",
+            logo: "https://trayancorp.com/images/logos/logo.svg",
+            image: "https://trayancorp.com/images/logos/logo.svg",
+            telephone: "+91 87809 98478",
+            email: "info@trayancorp.com",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress:
+                "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
+              addressLocality: "Ahmedabad",
+              addressRegion: "Gujarat",
+              postalCode: "382481",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: "23.1138826",
+              longitude: "72.5412793",
+            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "18:00",
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: "Saturday",
+                opens: "10:00",
+                closes: "16:00",
+              },
+            ],
+            sameAs: [
+              "https://www.facebook.com/trayancorp",
+              "https://www.linkedin.com/company/trayan-corporation",
+            ],
+          }),
+        }}
+      />
+
       {/* Hero Section */}
       <div className="relative min-h-[90vh] flex items-center">
         <div
