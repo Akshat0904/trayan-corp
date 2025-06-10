@@ -1,10 +1,13 @@
-# Allow all web crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 
-# Explicitly allow Googlebot
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 
-# Sitemap location
-Sitemap: https://trayancorp.com/sitemap.xml 
+Sitemap: https://trayancorp.com/sitemap.xml
