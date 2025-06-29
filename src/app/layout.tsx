@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/logos/logo.svg",
+        url: `${siteUrl}/images/logos/logo.svg`,
         width: 800,
         height: 600,
         alt: "Trayan Corporation Logo",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "Trayan Corporation - Chemical Trading Company",
     description:
       "Your trusted partner in chemical trading and manufacturing solutions.",
-    images: ["/images/logos/logo.svg"],
+    images: [`${siteUrl}/images/logos/logo.svg`],
   },
   icons: {
     icon: [
@@ -71,9 +71,6 @@ export const metadata: Metadata = {
     ],
     apple: "/images/logos/logo.svg",
     shortcut: "/images/logos/logo.svg",
-  },
-  alternates: {
-    canonical: siteUrl,
   },
 };
 
