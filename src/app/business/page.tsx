@@ -34,8 +34,8 @@ const Business = () => {
   return (
     <div>
       <SEO
-        title="Business Areas | Trayan Corporation"
-        description="Explore our comprehensive chemical business areas including trading, manufacturing solutions, technical support, and quality control services."
+        title="Business Areas - Chemical Trading & Manufacturing | Trayan Corporation"
+        description="Explore Trayan Corporation's comprehensive chemical business areas including trading, manufacturing solutions, technical support, and quality control services across India."
         canonical="/business"
         structuredData={{
           type: "BreadcrumbList",

@@ -55,55 +55,37 @@ const Home = () => {
   return (
     <div className="relative" ref={containerRef}>
       <SEO
-        title="Trayan Corporation - Chemical Trading Company"
-        description="Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions. We provide high-quality chemicals for various industries."
+        title="Trayan Corporation - Leading Chemical Trading & Manufacturing Company in India"
+        description="Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat. We specialize in sourcing, supplying, and distributing high-quality chemicals for various industries across India."
         canonical="/"
         pageType="website"
         structuredData={{
-          type: "Organization",
+          type: "WebSite",
           data: {
             name: "Trayan Corporation",
             url: "https://trayancorp.com",
-            logo: "https://trayancorp.com/images/logos/logo.svg",
-            contactPoint: [
-              {
-                "@type": "ContactPoint",
-                telephone: "+91 87809 98478",
-                contactType: "customer service",
-              },
-              {
-                "@type": "ContactPoint",
-                telephone: "+91 91063 64185",
-                contactType: "customer service",
-              },
-            ],
-            sameAs: [
-              "https://www.facebook.com/trayancorp",
-              "https://www.linkedin.com/company/trayan-corporation",
-              "https://twitter.com/trayancorp",
-            ],
-            description:
-              "Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions.",
           },
         }}
       />
 
-      {/* Additional Local Business Structured Data */}
+      {/* Organization Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://trayancorp.com",
+            "@type": "Organization",
+            "@id": "https://trayancorp.com/#organization",
             name: "Trayan Corporation",
+            alternateName: ["Trayan Corp", "Trayan Chemical"],
             description:
-              "Chemical trading and manufacturing company providing high-quality solutions for various industries",
+              "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, specializing in sourcing, supplying, and distributing high-quality chemicals for various industries across India.",
             url: "https://trayancorp.com",
             logo: "https://trayancorp.com/images/logos/logo.svg",
             image: "https://trayancorp.com/images/logos/logo.svg",
             telephone: "+91 87809 98478",
             email: "info@trayancorp.com",
+            foundingDate: "2020",
             address: {
               "@type": "PostalAddress",
               streetAddress:
@@ -118,29 +100,82 @@ const Home = () => {
               latitude: "23.1138826",
               longitude: "72.5412793",
             },
-            openingHoursSpecification: [
+            contactPoint: [
               {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                ],
-                opens: "09:00",
-                closes: "18:00",
+                "@type": "ContactPoint",
+                telephone: "+91 87809 98478",
+                contactType: "customer service",
+                areaServed: "IN",
+                availableLanguage: ["English", "Hindi", "Gujarati"],
               },
               {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: "Saturday",
-                opens: "10:00",
-                closes: "16:00",
+                "@type": "ContactPoint",
+                telephone: "+91 91063 64185",
+                contactType: "sales",
+                areaServed: "IN",
+                availableLanguage: ["English", "Hindi", "Gujarati"],
               },
             ],
             sameAs: [
               "https://www.facebook.com/trayancorp",
               "https://www.linkedin.com/company/trayan-corporation",
+              "https://twitter.com/trayancorp",
+            ],
+            knowsAbout: [
+              "Chemical Trading",
+              "Chemical Manufacturing",
+              "Industrial Chemicals",
+              "Chemical Solutions",
+              "Chemical Distribution",
+            ],
+            areaServed: {
+              "@type": "Country",
+              name: "India",
+            },
+          }),
+        }}
+      />
+
+      {/* FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is Trayan Corporation?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, India. We specialize in sourcing, supplying, and distributing high-quality chemicals for various industries across India.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What services does Trayan Corporation offer?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We offer comprehensive chemical trading services, manufacturing solutions, technical support, and quality control services. Our expertise spans across industrial chemicals, solvents, additives, and raw materials.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Where is Trayan Corporation located?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Trayan Corporation is located at 310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota, Ahmedabad, Gujarat 382481, India.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How can I contact Trayan Corporation?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "You can contact us at +91 87809 98478 or +91 91063 64185, or email us at info@trayancorp.com. Visit our contact page for more details.",
+                },
+              },
             ],
           }),
         }}

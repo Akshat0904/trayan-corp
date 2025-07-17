@@ -4,13 +4,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import ProductShowcase from "@/components/ProductShowcase";
 import SEO from "@/components/SEO";
+import { products } from "@/constants/products";
 
 const Products = () => {
+  // Generate keywords from product names and categories
+  const productKeywords = products.map(product => 
+    `${product.name.toLowerCase()}, ${product.category.toLowerCase()}`
+  ).join(', ');
+
   return (
     <div>
       <SEO
-        title="Chemical Products | Trayan Corporation"
-        description="Explore our comprehensive range of high-quality chemical products for every industry. From industrial solvents to specialized additives, find the perfect solution for your needs."
+        title="Chemical Products - Industrial Chemicals & Solvents | Trayan Corporation"
+        description="Explore Trayan Corporation's comprehensive range of high-quality chemical products for every industry. From industrial solvents to specialized additives, find the perfect chemical solution for your needs in India."
         canonical="/products"
         structuredData={{
           type: "BreadcrumbList",
@@ -33,6 +39,152 @@ const Products = () => {
         }}
       />
 
+      {/* Product Catalog Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Chemical Products Catalog - Trayan Corporation",
+            description: "Comprehensive catalog of chemical products including acids, solvents, and industrial chemicals",
+            numberOfItems: products.length,
+            url: "https://trayancorp.com/products",
+            itemListElement: products.slice(0, 20).map((product, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "Product",
+                "@id": `https://trayancorp.com/products#${product.id}`,
+                name: product.name,
+                description: product.description,
+                category: product.category,
+                brand: {
+                  "@type": "Brand",
+                  name: "Trayan Corporation",
+                },
+                manufacturer: {
+                  "@type": "Organization",
+                  name: "Trayan Corporation",
+                  url: "https://trayancorp.com",
+                },
+                offers: {
+                  "@type": "Offer",
+                  priceCurrency: "USD",
+                  price: product.price.replace(/[^0-9-]/g, '').split('-')[0] || "50",
+                  availability: "https://schema.org/InStock",
+                  seller: {
+                    "@type": "Organization",
+                    name: "Trayan Corporation",
+                  },
+                },
+                additionalProperty: [
+                  {
+                    "@type": "PropertyValue",
+                    name: "Category",
+                    value: product.category,
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    name: "Industry",
+                    value: "Chemical Trading",
+                  },
+                ],
+              },
+            })),
+          }),
+        }}
+      />
+
+      {/* Organization Products Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://trayancorp.com/#organization",
+            name: "Trayan Corporation",
+            url: "https://trayancorp.com",
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: "Chemical Products Catalog",
+              itemListElement: products.map(product => ({
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Product",
+                  name: product.name,
+                  description: product.description,
+                  category: product.category,
+                },
+              })),
+            },
+            makesOffer: products.slice(0, 10).map(product => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Product",
+                name: product.name,
+                description: product.description,
+                category: product.category,
+              },
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+            })),
+          }),
+        }}
+      />
+
+      {/* Keywords Meta Tag */}
+      <meta 
+        name="keywords" 
+        content={`chemical products, industrial chemicals, ${productKeywords}, chemical supplier India, Trayan Corporation`}
+      />
+
+      {/* Product FAQ Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What chemical products does Trayan Corporation offer?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: `Trayan Corporation offers a comprehensive range of chemical products including ${Array.from(new Set(products.map(p => p.category))).join(', ')}. We specialize in high-quality industrial chemicals, acids, solvents, and specialty chemicals for various industries.`,
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which industries use Trayan Corporation's chemical products?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Our chemical products serve diverse industries including manufacturing, pharmaceuticals, textiles, agriculture, water treatment, food processing, and many other industrial applications.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Are Trayan Corporation's chemical products ISO certified?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, our manufacturing processes adhere to ISO 9001 and ISO 14001 standards for quality and environmental management. Every product batch is thoroughly tested to ensure consistent quality.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How can I purchase chemical products from Trayan Corporation?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "You can contact us directly at +91 87809 98478 or email info@trayancorp.com for product inquiries and purchases. We provide customized solutions and competitive pricing for bulk orders.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
       <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white py-10 md:py-24">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
         <div className="container mx-auto mt-12 md:mt-5 px-6 max-w-7xl relative">
@@ -52,6 +204,20 @@ const Products = () => {
               solvents to specialized additives, we provide solutions tailored
               to your specific needs.
             </p>
+            <div className="mt-6 flex flex-wrap gap-2 text-sm">
+              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+                {products.filter(p => p.category === "STRONG ACIDS").length} Strong Acids
+              </span>
+              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+                {products.filter(p => p.category === "BASIC CHEMICAL").length} Basic Chemicals
+              </span>
+              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+                {products.filter(p => p.category === "INORGANIC CHEMICAL").length} Inorganic Chemicals
+              </span>
+              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+                {products.filter(p => p.category === "SOLVENTS").length} Solvents
+              </span>
+            </div>
             {/* <div className="flex flex-wrap gap-4">
               <button className="bg-white text-primary-700 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300">
                 Request Custom Quote
@@ -65,6 +231,111 @@ const Products = () => {
       </div>
 
       <ProductShowcase />
+
+      {/* Featured Products Section */}
+      <div className="bg-white py-16">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-heading">
+              Featured Chemical Products
+            </h2>
+            <p className="text-lg text-gray-600">
+              Explore our most popular chemical products trusted by industries worldwide
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.slice(0, 6).map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="mb-4">
+                  <span className="inline-block bg-primary-100 text-primary-800 text-xs px-2 py-1 rounded-full font-medium">
+                    {product.category}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  {product.description}
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-primary-600 font-medium">
+                    {product.price}
+                  </span>
+                  <button className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                    Learn More →
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-gray-600 mb-4">
+              Looking for a specific chemical product? We have {products.length}+ products in our catalog.
+            </p>
+            <button className="bg-primary-600 text-white px-8 py-3 rounded-md font-medium hover:bg-primary-700 transition-colors duration-300">
+              View Complete Catalog
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Product Categories Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-heading">
+              Product Categories
+            </h2>
+            <p className="text-lg text-gray-600">
+              Browse our extensive range of chemical products by category
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {Array.from(new Set(products.map(p => p.category))).map((category, index) => {
+              const categoryProducts = products.filter(p => p.category === category);
+              return (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    {category}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    {categoryProducts.length} products available
+                  </p>
+                  <div className="space-y-2">
+                    {categoryProducts.slice(0, 3).map(product => (
+                      <div key={product.id} className="text-sm text-gray-500">
+                        • {product.name}
+                      </div>
+                    ))}
+                    {categoryProducts.length > 3 && (
+                      <div className="text-sm text-primary-600 font-medium">
+                        +{categoryProducts.length - 3} more products
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* Additional Info Section */}
       <div className="bg-gray-50 py-16">

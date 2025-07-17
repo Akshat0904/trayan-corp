@@ -13,8 +13,8 @@ const Contact = () => {
   return (
     <div>
       <SEO
-        title="Contact Us | Trayan Corporation"
-        description="Get in touch with Trayan Corporation for inquiries about our chemical products and services. We're here to help with your chemical trading needs."
+        title="Contact Us - Chemical Trading Company in Ahmedabad | Trayan Corporation"
+        description="Get in touch with Trayan Corporation for inquiries about our chemical products and services. Located in Ahmedabad, Gujarat, we're here to help with your chemical trading needs across India."
         canonical="/contact"
         structuredData={{
           type: "BreadcrumbList",

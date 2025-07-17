@@ -19,16 +19,23 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://trayancorp.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Trayan Corporation - Chemical Trading Company",
+  title: {
+    default: "Trayan Corporation - Leading Chemical Trading & Manufacturing Company in India",
+    template: "%s | Trayan Corporation"
+  },
   description:
-    "Trayan Corporation - Your trusted partner in chemical trading and manufacturing solutions. We provide high-quality chemicals for various industries.",
+    "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat. We specialize in sourcing, supplying, and distributing high-quality chemicals for various industries across India.",
   keywords: [
-    "chemical trading",
+    "Trayan Corporation",
+    "chemical trading company",
     "chemical manufacturing",
     "industrial chemicals",
-    "Trayan Corporation",
+    "chemical supplier India",
+    "chemical trading Ahmedabad",
+    "Gujarat chemical company",
     "chemical solutions",
-    "chemical supplier",
+    "chemical distributor",
+    "industrial chemical supplier",
   ],
   robots: {
     index: true,

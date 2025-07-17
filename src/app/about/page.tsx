@@ -47,8 +47,8 @@ const AboutPage = () => {
   return (
     <div className="bg-white">
       <SEO
-        title="About Trayan Corporation | Your Chemical Trading Partner"
-        description="Learn about Trayan Corporation - your trusted partner in chemical trading and manufacturing with years of experience serving industries worldwide."
+        title="About Trayan Corporation - Leading Chemical Trading Company in Ahmedabad"
+        description="Learn about Trayan Corporation - your trusted partner in chemical trading and manufacturing based in Ahmedabad, Gujarat with years of experience serving industries across India."
         canonical="/about"
         structuredData={{
           type: "BreadcrumbList",
