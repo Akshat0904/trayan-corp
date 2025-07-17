@@ -1,12 +1,18 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ProductShowcase from "@/components/ProductShowcase";
 import SEO from "@/components/SEO";
 import { products } from "@/constants/products";
 
 const Products = () => {
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
   // Generate keywords from product names and categories
   const productKeywords = products.map(product => 
     `${product.name.toLowerCase()}, ${product.category.toLowerCase()}`
@@ -232,7 +238,7 @@ const Products = () => {
 
       <ProductShowcase />
 
-      {/* Featured Products Section */}
+      {/* Featured Products Section
       <div className="bg-white py-16">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="mx-auto max-w-3xl text-center mb-12">
@@ -286,7 +292,7 @@ const Products = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Product Categories Section */}
       <div className="bg-gray-50 py-16">
@@ -303,32 +309,79 @@ const Products = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {Array.from(new Set(products.map(p => p.category))).map((category, index) => {
               const categoryProducts = products.filter(p => p.category === category);
+              const categoryId = `category-${index}-${category.replace(/\s+/g, '-').toLowerCase()}`;
+              const isExpanded = expandedCategory === categoryId;
+              
               return (
                 <motion.div
-                  key={category}
+                  key={categoryId}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    {category}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    {categoryProducts.length} products available
-                  </p>
-                  <div className="space-y-2">
-                    {categoryProducts.slice(0, 3).map(product => (
-                      <div key={product.id} className="text-sm text-gray-500">
-                        • {product.name}
-                      </div>
-                    ))}
-                    {categoryProducts.length > 3 && (
-                      <div className="text-sm text-primary-600 font-medium">
-                        +{categoryProducts.length - 3} more products
-                      </div>
-                    )}
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {category}
+                      </h3>
+                      <button
+                        onClick={() => toggleCategory(categoryId)}
+                        className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 hover:bg-primary-100 transition-colors duration-200"
+                        aria-label={isExpanded ? "Collapse category" : "Expand category"}
+                      >
+                        <motion.div
+                          animate={{ rotate: isExpanded ? 45 : 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="text-lg font-semibold"
+                        >
+                          +
+                        </motion.div>
+                      </button>
+                    </div>
+                    
+                    <p className="text-gray-600 text-sm mb-4">
+                      {categoryProducts.length} products available
+                    </p>
+                    
+                    <div className="space-y-2">
+                      {categoryProducts.slice(0, 3).map(product => (
+                        <div key={product.id} className="text-sm text-gray-500">
+                          • {product.name}
+                        </div>
+                      ))}
+                      {categoryProducts.length > 3 && !isExpanded && (
+                        <button
+                          onClick={() => toggleCategory(categoryId)}
+                          className="text-sm text-primary-600 font-medium hover:text-primary-700 transition-colors duration-200"
+                        >
+                          +{categoryProducts.length - 3} more products
+                        </button>
+                      )}
+                    </div>
+
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-4 pt-4 border-t border-gray-200">
+                            <div className="space-y-2">
+                              {categoryProducts.slice(3).map(product => (
+                                <div key={product.id} className="text-sm text-gray-500">
+                                  • {product.name}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               );
