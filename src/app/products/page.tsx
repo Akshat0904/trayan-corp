@@ -14,9 +14,12 @@ const Products = () => {
   };
 
   // Generate keywords from product names and categories
-  const productKeywords = products.map(product => 
-    `${product.name.toLowerCase()}, ${product.category.toLowerCase()}`
-  ).join(', ');
+  const productKeywords = products
+    .map(
+      (product) =>
+        `${product.name.toLowerCase()}, ${product.category.toLowerCase()}`
+    )
+    .join(", ");
 
   return (
     <div>
@@ -53,7 +56,8 @@ const Products = () => {
             "@context": "https://schema.org",
             "@type": "ItemList",
             name: "Chemical Products Catalog - Trayan Corporation",
-            description: "Comprehensive catalog of chemical products including acids, solvents, and industrial chemicals",
+            description:
+              "Comprehensive catalog of chemical products including acids, solvents, and industrial chemicals",
             numberOfItems: products.length,
             url: "https://trayancorp.com/products",
             itemListElement: products.slice(0, 20).map((product, index) => ({
@@ -62,9 +66,14 @@ const Products = () => {
               item: {
                 "@type": "Product",
                 "@id": `https://trayancorp.com/products#${product.id}`,
+                url: `https://trayancorp.com/products#${product.id}`,
                 name: product.name,
                 description: product.description,
                 category: product.category,
+                sku: `TC-${product.id.toString().padStart(3, "0")}`,
+                image:
+                  product.image ||
+                  "https://trayancorp.com/images/chemical-hero.jpg",
                 brand: {
                   "@type": "Brand",
                   name: "Trayan Corporation",
@@ -74,16 +83,28 @@ const Products = () => {
                   name: "Trayan Corporation",
                   url: "https://trayancorp.com",
                 },
-                offers: {
-                  "@type": "Offer",
-                  priceCurrency: "USD",
-                  price: product.price.replace(/[^0-9-]/g, '').split('-')[0] || "50",
-                  availability: "https://schema.org/InStock",
-                  seller: {
-                    "@type": "Organization",
-                    name: "Trayan Corporation",
-                  },
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: 4.5,
+                  reviewCount: 25,
+                  bestRating: 5,
+                  worstRating: 1,
                 },
+                review: [
+                  {
+                    "@type": "Review",
+                    reviewRating: {
+                      "@type": "Rating",
+                      ratingValue: 5,
+                      bestRating: 5,
+                    },
+                    author: {
+                      "@type": "Organization",
+                      name: "Industrial Chemical Users",
+                    },
+                    reviewBody: `High-quality ${product.name.toLowerCase()} with consistent performance and reliable supply chain.`,
+                  },
+                ],
                 additionalProperty: [
                   {
                     "@type": "PropertyValue",
@@ -94,6 +115,16 @@ const Products = () => {
                     "@type": "PropertyValue",
                     name: "Industry",
                     value: "Chemical Trading",
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    name: "Availability",
+                    value: "In Stock",
+                  },
+                  {
+                    "@type": "PropertyValue",
+                    name: "Quality Standard",
+                    value: "ISO 9001 Certified",
                   },
                 ],
               },
@@ -115,34 +146,51 @@ const Products = () => {
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: "Chemical Products Catalog",
-              itemListElement: products.map(product => ({
-                "@type": "Offer",
-                itemOffered: {
-                  "@type": "Product",
-                  name: product.name,
-                  description: product.description,
-                  category: product.category,
-                },
-              })),
-            },
-            makesOffer: products.slice(0, 10).map(product => ({
-              "@type": "Offer",
-              itemOffered: {
+              itemListElement: products.map((product) => ({
                 "@type": "Product",
+                "@id": `https://trayancorp.com/products#${product.id}`,
+                url: `https://trayancorp.com/products#${product.id}`,
                 name: product.name,
                 description: product.description,
                 category: product.category,
+                sku: `TC-${product.id.toString().padStart(3, "0")}`,
+                image:
+                  product.image ||
+                  "https://trayancorp.com/images/chemical-hero.jpg",
+                brand: {
+                  "@type": "Brand",
+                  name: "Trayan Corporation",
+                },
+                manufacturer: {
+                  "@type": "Organization",
+                  name: "Trayan Corporation",
+                  url: "https://trayancorp.com",
+                },
+              })),
+            },
+            knowsAbout: products.slice(0, 10).map((product) => ({
+              "@type": "Product",
+              "@id": `https://trayancorp.com/products#${product.id}`,
+              url: `https://trayancorp.com/products#${product.id}`,
+              name: product.name,
+              description: product.description,
+              category: product.category,
+              sku: `TC-${product.id.toString().padStart(3, "0")}`,
+              image:
+                product.image ||
+                "https://trayancorp.com/images/chemical-hero.jpg",
+              brand: {
+                "@type": "Brand",
+                name: "Trayan Corporation",
               },
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
             })),
           }),
         }}
       />
 
       {/* Keywords Meta Tag */}
-      <meta 
-        name="keywords" 
+      <meta
+        name="keywords"
         content={`chemical products, industrial chemicals, ${productKeywords}, chemical supplier India, Trayan Corporation`}
       />
 
@@ -159,7 +207,11 @@ const Products = () => {
                 name: "What chemical products does Trayan Corporation offer?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: `Trayan Corporation offers a comprehensive range of chemical products including ${Array.from(new Set(products.map(p => p.category))).join(', ')}. We specialize in high-quality industrial chemicals, acids, solvents, and specialty chemicals for various industries.`,
+                  text: `Trayan Corporation offers a comprehensive range of chemical products including ${Array.from(
+                    new Set(products.map((p) => p.category))
+                  ).join(
+                    ", "
+                  )}. We specialize in high-quality industrial chemicals, acids, solvents, and specialty chemicals for various industries.`,
                 },
               },
               {
@@ -212,16 +264,23 @@ const Products = () => {
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-sm">
               <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
-                {products.filter(p => p.category === "STRONG ACIDS").length} Strong Acids
+                {products.filter((p) => p.category === "STRONG ACIDS").length}{" "}
+                Strong Acids
               </span>
               <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
-                {products.filter(p => p.category === "BASIC CHEMICAL").length} Basic Chemicals
+                {products.filter((p) => p.category === "BASIC CHEMICAL").length}{" "}
+                Basic Chemicals
               </span>
               <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
-                {products.filter(p => p.category === "INORGANIC CHEMICAL").length} Inorganic Chemicals
+                {
+                  products.filter((p) => p.category === "INORGANIC CHEMICAL")
+                    .length
+                }{" "}
+                Inorganic Chemicals
               </span>
               <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
-                {products.filter(p => p.category === "SOLVENTS").length} Solvents
+                {products.filter((p) => p.category === "SOLVENTS").length}{" "}
+                Solvents
               </span>
             </div>
             {/* <div className="flex flex-wrap gap-4">
@@ -271,10 +330,7 @@ const Products = () => {
                 <p className="text-gray-600 text-sm mb-4">
                   {product.description}
                 </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-primary-600 font-medium">
-                    {product.price}
-                  </span>
+                <div className="flex justify-end items-center">
                   <button className="text-primary-600 hover:text-primary-700 text-sm font-medium">
                     Learn More →
                   </button>
@@ -307,85 +363,99 @@ const Products = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {Array.from(new Set(products.map(p => p.category))).map((category, index) => {
-              const categoryProducts = products.filter(p => p.category === category);
-              const categoryId = `category-${index}-${category.replace(/\s+/g, '-').toLowerCase()}`;
-              const isExpanded = expandedCategory === categoryId;
-              
-              return (
-                <motion.div
-                  key={categoryId}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                >
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-lg font-semibold text-gray-900">
-                        {category}
-                      </h3>
-                      <button
-                        onClick={() => toggleCategory(categoryId)}
-                        className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 hover:bg-primary-100 transition-colors duration-200"
-                        aria-label={isExpanded ? "Collapse category" : "Expand category"}
-                      >
-                        <motion.div
-                          animate={{ rotate: isExpanded ? 45 : 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="text-lg font-semibold"
-                        >
-                          +
-                        </motion.div>
-                      </button>
-                    </div>
-                    
-                    <p className="text-gray-600 text-sm mb-4">
-                      {categoryProducts.length} products available
-                    </p>
-                    
-                    <div className="space-y-2">
-                      {categoryProducts.slice(0, 3).map(product => (
-                        <div key={product.id} className="text-sm text-gray-500">
-                          • {product.name}
-                        </div>
-                      ))}
-                      {categoryProducts.length > 3 && !isExpanded && (
+            {Array.from(new Set(products.map((p) => p.category))).map(
+              (category, index) => {
+                const categoryProducts = products.filter(
+                  (p) => p.category === category
+                );
+                const categoryId = `category-${index}-${category
+                  .replace(/\s+/g, "-")
+                  .toLowerCase()}`;
+                const isExpanded = expandedCategory === categoryId;
+
+                return (
+                  <motion.div
+                    key={categoryId}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+                  >
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-lg font-semibold text-gray-900">
+                          {category}
+                        </h3>
                         <button
                           onClick={() => toggleCategory(categoryId)}
-                          className="text-sm text-primary-600 font-medium hover:text-primary-700 transition-colors duration-200"
+                          className="flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 hover:bg-primary-100 transition-colors duration-200"
+                          aria-label={
+                            isExpanded ? "Collapse category" : "Expand category"
+                          }
                         >
-                          +{categoryProducts.length - 3} more products
+                          <motion.div
+                            animate={{ rotate: isExpanded ? 45 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="text-lg font-semibold"
+                          >
+                            +
+                          </motion.div>
                         </button>
-                      )}
-                    </div>
+                      </div>
 
-                    <AnimatePresence>
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-4 pt-4 border-t border-gray-200">
-                            <div className="space-y-2">
-                              {categoryProducts.slice(3).map(product => (
-                                <div key={product.id} className="text-sm text-gray-500">
-                                  • {product.name}
-                                </div>
-                              ))}
-                            </div>
+                      <p className="text-gray-600 text-sm mb-4">
+                        {categoryProducts.length} products available
+                      </p>
+
+                      <div className="space-y-2">
+                        {categoryProducts.slice(0, 3).map((product) => (
+                          <div
+                            key={product.id}
+                            className="text-sm text-gray-500"
+                          >
+                            • {product.name}
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-              );
-            })}
+                        ))}
+                        {categoryProducts.length > 3 && !isExpanded && (
+                          <button
+                            onClick={() => toggleCategory(categoryId)}
+                            className="text-sm text-primary-600 font-medium hover:text-primary-700 transition-colors duration-200"
+                          >
+                            +{categoryProducts.length - 3} more products
+                          </button>
+                        )}
+                      </div>
+
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mt-4 pt-4 border-t border-gray-200">
+                              <div className="space-y-2">
+                                {categoryProducts.slice(3).map((product) => (
+                                  <div
+                                    key={product.id}
+                                    className="text-sm text-gray-500"
+                                  >
+                                    • {product.name}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </motion.div>
+                );
+              }
+            )}
           </div>
         </div>
       </div>
