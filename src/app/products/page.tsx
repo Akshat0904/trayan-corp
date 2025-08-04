@@ -60,7 +60,7 @@ const Products = () => {
               "Comprehensive catalog of chemical products including acids, solvents, and industrial chemicals",
             numberOfItems: products.length,
             url: "https://trayancorp.com/products",
-            itemListElement: products.slice(0, 20).map((product, index) => ({
+            itemListElement: products.map((product, index) => ({
               "@type": "ListItem",
               position: index + 1,
               item: {
