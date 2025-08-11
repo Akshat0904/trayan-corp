@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Generate sitemap (uses git last commit dates per page)
+npm run sitemap
+
+# Stage the updated sitemap if changed
+git add public/sitemap.xml
