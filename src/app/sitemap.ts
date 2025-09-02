@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://trayancorp.com";
   const root = getRepoRoot();
 
+<<<<<<< Updated upstream
   // Map routes to their source files in the app directory
   const routeToFile: Record<string, string> = {
     "/": path.join(root, "src", "app", "page.tsx"),
@@ -67,4 +68,151 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   return entries;
+=======
+  return [
+    // Homepage - Highest priority
+    {
+      url: `${baseUrl}/`,
+      lastModified: currentDate,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    // Main service pages - High priority
+    {
+      url: `${baseUrl}/products`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    // About page - Important for trust signals
+    {
+      url: `${baseUrl}/about`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    // Business page - Important for B2B SEO
+    {
+      url: `${baseUrl}/business`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    // Contact page - Important for local SEO
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    // Add specific product categories for better SEO
+    {
+      url: `${baseUrl}/products/industrial-chemicals`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/solvents`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/additives`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/products/raw-materials`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    // Location-based pages for local SEO
+    {
+      url: `${baseUrl}/chemical-suppliers-ahmedabad`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/chemical-trading-gujarat`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    // Industry-specific pages
+    {
+      url: `${baseUrl}/industries/pharmaceutical`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/industries/textile`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/industries/manufacturing`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    // Service pages
+    {
+      url: `${baseUrl}/services/chemical-trading`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/manufacturing`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/quality-control`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    // Additional SEO pages
+    {
+      url: `${baseUrl}/why-choose-trayan-corporation`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/global-chemical-supplier`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    // Legal and policy pages
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms-of-service`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/quality-policy`,
+      lastModified: currentDate,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+  ];
+>>>>>>> Stashed changes
 }
