@@ -4,8 +4,6 @@ import path from "path";
 import { execSync } from "child_process";
 
 function getRepoRoot(): string {
-  // Resolve repo root relative to this file
-  // This file lives at src/app/sitemap.ts
   return path.resolve(process.cwd());
 }
 
@@ -40,179 +38,273 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://trayancorp.com";
   const root = getRepoRoot();
 
-<<<<<<< Updated upstream
-  // Map routes to their source files in the app directory
-  const routeToFile: Record<string, string> = {
-    "/": path.join(root, "src", "app", "page.tsx"),
-    "/about": path.join(root, "src", "app", "about", "page.tsx"),
-    "/products": path.join(root, "src", "app", "products", "page.tsx"),
-    "/business": path.join(root, "src", "app", "business", "page.tsx"),
-    "/contact": path.join(root, "src", "app", "contact", "page.tsx"),
+  // Complete route mapping following SEO master template recommendations
+  const routeToFile: Record<string, { file: string; changeFreq: "daily" | "weekly" | "monthly" | "yearly"; priority: number }> = {
+    // Core Business Pages - Highest Priority
+    "/": { 
+      file: path.join(root, "src", "app", "page.tsx"), 
+      changeFreq: "daily", 
+      priority: 1.0 
+    },
+    "/products": { 
+      file: path.join(root, "src", "app", "products", "page.tsx"), 
+      changeFreq: "weekly", 
+      priority: 0.9 
+    },
+    
+    // Trust & Authority Pages - High Priority
+    "/about": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.8 
+    },
+    "/business": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.8 
+    },
+    "/contact": { 
+      file: path.join(root, "src", "app", "contact", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.7 
+    },
+
+    // Product Category Pages - SEO Focused
+    "/products/industrial-chemicals": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "weekly", 
+      priority: 0.8 
+    },
+    "/products/solvents": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "weekly", 
+      priority: 0.8 
+    },
+    "/products/additives": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "weekly", 
+      priority: 0.8 
+    },
+    "/products/raw-materials": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "weekly", 
+      priority: 0.8 
+    },
+    "/products/specialty-chemicals": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "weekly", 
+      priority: 0.8 
+    },
+    "/products/bulk-chemicals": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "weekly", 
+      priority: 0.8 
+    },
+
+    // Location-Based SEO Pages - Local SEO Priority
+    "/chemical-suppliers-ahmedabad": { 
+      file: path.join(root, "src", "app", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.7 
+    },
+    "/chemical-trading-gujarat": { 
+      file: path.join(root, "src", "app", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.7 
+    },
+    "/chemical-company-gota": { 
+      file: path.join(root, "src", "app", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.7 
+    },
+    "/chemical-manufacturer-ahmedabad": { 
+      file: path.join(root, "src", "app", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.7 
+    },
+    "/industrial-chemicals-gujarat": { 
+      file: path.join(root, "src", "app", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.7 
+    },
+
+    // Industry-Specific Landing Pages
+    "/industries/pharmaceutical": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/textile": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/paint-coatings": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/plastics-polymers": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/rubber": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/food-processing": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/agriculture": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/construction": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/automotive": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industries/electronics": { 
+      file: path.join(root, "src", "constants", "products.ts"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+
+    // Service Pages - B2B Focus
+    "/services/chemical-trading": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/services/manufacturing": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/services/quality-control": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/services/technical-support": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/services/chemical-consultation": { 
+      file: path.join(root, "src", "app", "contact", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/services/supply-chain": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/services/chemical-procurement": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+
+    // SEO-Focused Brand Pages
+    "/why-choose-trayan-corporation": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/global-chemical-supplier": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/trusted-chemical-partner": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/chemical-solutions-india": { 
+      file: path.join(root, "src", "app", "products", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.5 
+    },
+    "/experience-chemical-trading": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.4 
+    },
+
+    // Location + Service Combination Pages
+    "/chemical-trading-ahmedabad-gujarat": { 
+      file: path.join(root, "src", "app", "contact", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/industrial-chemical-supplier-ahmedabad": { 
+      file: path.join(root, "src", "app", "products", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+    "/chemical-manufacturer-gujarat": { 
+      file: path.join(root, "src", "app", "business", "page.tsx"), 
+      changeFreq: "monthly", 
+      priority: 0.6 
+    },
+
+    // Compliance & Quality Pages
+    "/quality-policy": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "yearly", 
+      priority: 0.4 
+    },
+    "/iso-certification": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "yearly", 
+      priority: 0.4 
+    },
+    "/chemical-safety-standards": { 
+      file: path.join(root, "src", "app", "about", "page.tsx"), 
+      changeFreq: "yearly", 
+      priority: 0.4 
+    },
+
+    // Legal Pages
+    "/privacy-policy": { 
+      file: path.join(root, "src", "app", "layout.tsx"), 
+      changeFreq: "yearly", 
+      priority: 0.3 
+    },
+    "/terms-of-service": { 
+      file: path.join(root, "src", "app", "layout.tsx"), 
+      changeFreq: "yearly", 
+      priority: 0.3 
+    },
+    "/cookie-policy": { 
+      file: path.join(root, "src", "app", "layout.tsx"), 
+      changeFreq: "yearly", 
+      priority: 0.2 
+    },
   };
 
+  // Generate sitemap entries with automatic file change detection
   const entries: MetadataRoute.Sitemap = Object.entries(routeToFile).map(
-    ([route, filePath]) => ({
+    ([route, config]) => ({
       url: `${baseUrl}${route}`,
-      lastModified: getLastModifiedForFile(filePath),
-      changeFrequency:
-        route === "/" || route === "/products" ? "weekly" : "monthly",
-      priority:
-        route === "/"
-          ? 1.0
-          : route === "/products"
-          ? 0.9
-          : route === "/about" || route === "/business"
-          ? 0.8
-          : 0.7,
+      lastModified: getLastModifiedForFile(config.file),
+      changeFrequency: config.changeFreq,
+      priority: config.priority,
     })
   );
 
   return entries;
-=======
-  return [
-    // Homepage - Highest priority
-    {
-      url: `${baseUrl}/`,
-      lastModified: currentDate,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    // Main service pages - High priority
-    {
-      url: `${baseUrl}/products`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    // About page - Important for trust signals
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    // Business page - Important for B2B SEO
-    {
-      url: `${baseUrl}/business`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    // Contact page - Important for local SEO
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    // Add specific product categories for better SEO
-    {
-      url: `${baseUrl}/products/industrial-chemicals`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/products/solvents`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/products/additives`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/products/raw-materials`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    // Location-based pages for local SEO
-    {
-      url: `${baseUrl}/chemical-suppliers-ahmedabad`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/chemical-trading-gujarat`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    // Industry-specific pages
-    {
-      url: `${baseUrl}/industries/pharmaceutical`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/industries/textile`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/industries/manufacturing`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    // Service pages
-    {
-      url: `${baseUrl}/services/chemical-trading`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/services/manufacturing`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/services/quality-control`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    // Additional SEO pages
-    {
-      url: `${baseUrl}/why-choose-trayan-corporation`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/global-chemical-supplier`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    // Legal and policy pages
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms-of-service`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/quality-policy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-  ];
->>>>>>> Stashed changes
 }

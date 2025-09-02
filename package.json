@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build && npm run sitemap",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "prepare": "husky"
+    "seo:update": "next build && echo 'Sitemap updated with latest file changes'",
+    "seo:validate": "node scripts/validate-seo.js",
+    "pre-commit": "npm run seo:update && npm run lint"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
