@@ -186,7 +186,7 @@ const AboutPage = () => {
               "@id": "https://trayancorp.com/#corporation",
               name: "Trayan Corporation",
               legalName: "Trayan Corporation Private Limited",
-              foundingDate: "2020",
+              foundingDate: "2020-01-01",
               foundingLocation: {
                 "@type": "Place",
                 name: "Ahmedabad, Gujarat, India",
@@ -198,27 +198,11 @@ const AboutPage = () => {
                 minValue: 10,
                 maxValue: 50,
               },
-              industry: [
-                "Chemical Trading",
-                "Chemical Manufacturing",
-                "Industrial Chemicals",
-                "Chemical Distribution",
-              ],
               knowsAbout: [
                 "Chemical Trading",
                 "Chemical Manufacturing",
                 "Industrial Chemicals",
-                "Chemical Solvents",
-                "Chemical Additives",
-                "Raw Materials Distribution",
-                "Chemical Supply Chain Management",
-                "Chemical Quality Control",
-                "Chemical Import Export",
-                "Pharmaceutical Chemicals",
-                "Textile Chemicals",
-                "Paint and Coating Chemicals",
-                "Specialty Chemicals",
-                "Bulk Chemicals",
+                "Chemical Distribution",
               ],
               location: {
                 "@type": "Place",
@@ -233,48 +217,7 @@ const AboutPage = () => {
                   addressCountry: "India",
                 },
               },
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "Chemical Products and Services",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Chemical Trading Services",
-                      description:
-                        "Professional chemical trading and distribution services for industrial clients",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Chemical Manufacturing",
-                      description:
-                        "Custom chemical manufacturing and processing at our Talod GIDC facility",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Product",
-                      name: "Industrial Chemicals",
-                      description:
-                        "Wide range of industrial chemicals for various manufacturing processes",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Product",
-                      name: "Chemical Solvents",
-                      description:
-                        "High-quality chemical solvents for industrial applications",
-                    },
-                  },
-                ],
-              },
+
               award: [
                 "ISO 9001:2015 Certified",
                 "Chemical Trading License",
@@ -301,18 +244,31 @@ const AboutPage = () => {
             author: {
               "@type": "Organization",
               name: "Trayan Corporation",
+              url: "https://trayancorp.com",
             },
             publisher: {
               "@type": "Organization",
               name: "Trayan Corporation",
+              url: "https://trayancorp.com",
               logo: {
                 "@type": "ImageObject",
                 url: "https://trayancorp.com/images/logos/logo.svg",
+                width: 400,
+                height: 400,
               },
             },
-            datePublished: "2020-01-01",
+            datePublished: "2020-01-01T00:00:00+05:30",
             dateModified: new Date().toISOString(),
-            mainEntityOfPage: "https://trayancorp.com/about",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": "https://trayancorp.com/about",
+            },
+            image: {
+              "@type": "ImageObject",
+              url: "https://trayancorp.com/images/logos/logo.svg",
+              width: 400,
+              height: 400,
+            },
             articleBody:
               "Welcome to Trayan Corporation, where our head office is situated in Ahmedabad. We are your trusted partner for chemical merchandise, with a substantial background in the chemical industry spanning many years. We specialize in sourcing, supplying and distributing a wide range of chemicals to meet your unique business needs. Our commitment to quality, reliability, and sustainability sets us apart in this dynamic industry. In addition to our strong distribution network, we operate our own manufacturing facility at Talod GIDC, allowing us to deliver both standard and customized products with greater efficiency and control.",
           }),
