@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProductShowcase from "@/components/ProductShowcase";
 import SEO from "@/components/SEO";
@@ -9,14 +9,9 @@ import { products, Product } from "@/constants/products";
 import { findProductBySlug, generateProductSlug } from "@/utils/productUtils";
 
 const ProductsContent = () => {
-  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const toggleCategory = (categoryId: string) => {
-    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
-  };
 
   // Handle URL-based product selection
   useEffect(() => {
