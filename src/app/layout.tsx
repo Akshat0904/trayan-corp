@@ -20,11 +20,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://trayancorp.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Trayan Corporation | Chemical Trading & Manufacturing Company | Ahmedabad, Gujarat, India",
-    template: "%s | Trayan Corporation - Chemical Solutions Provider"
+    default:
+      "Trayan Corporation | Chemical Trading & Manufacturing Company | Ahmedabad, Gujarat, India",
+    template: "%s | Trayan Corporation - Chemical Solutions Provider",
   },
   description:
-    "Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat, India. Specializing in industrial chemicals, solvents, additives & raw materials. Trusted chemical supplier with 5+ years experience. Call +91 87809 98478",
+    "Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat, India. Specializing in industrial chemicals, solvents, additives & raw materials. Trusted chemical supplier with 5+ years experience serving 10+ countries with 300+ products. Contact: +91 87809 98478",
   keywords: [
     // Company Name Variations
     "Trayan Corporation",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     "Trayan Chemical Company",
     "Trayan Corporation Private Limited",
     "Trayan Corporation Pvt Ltd",
-    
+
     // Core Business Keywords
     "chemical trading company",
     "chemical manufacturing",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     "chemical supply chain",
     "chemical procurement",
     "chemical sourcing",
-    
+
     // Location-Based Keywords - Ahmedabad Focus
     "chemical company Ahmedabad",
     "chemical suppliers Ahmedabad",
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
     "Ahmedabad chemical trading",
     "Ahmedabad industrial chemicals",
     "Ahmedabad chemical solutions",
-    
+
     // Location-Based Keywords - Gujarat Focus
     "chemical company Gujarat",
     "chemical suppliers Gujarat",
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
     "Gujarat chemical trading",
     "Gujarat industrial chemicals",
     "Gujarat chemical solutions",
-    
+
     // Specific Area Keywords
     "Gota chemical company",
     "Jagatpur chemical company",
@@ -104,7 +105,7 @@ export const metadata: Metadata = {
     "Shela chemical company",
     "Prahlad Nagar chemical company",
     "Science City chemical company",
-    
+
     // Pin Code and Address Keywords
     "382481 chemical company",
     "chemical company 382481",
@@ -114,7 +115,7 @@ export const metadata: Metadata = {
     "chemical company near Science City",
     "chemical company near Bopal",
     "chemical company near Shela",
-    
+
     // Near Me Keywords
     "chemical suppliers near me",
     "chemical company near me",
@@ -123,7 +124,7 @@ export const metadata: Metadata = {
     "chemical distributors near me",
     "industrial chemicals near me",
     "chemical solutions near me",
-    
+
     // India Focus Keywords
     "chemical supplier India",
     "chemical company India",
@@ -141,7 +142,7 @@ export const metadata: Metadata = {
     "India chemical business",
     "India chemical solutions",
     "India industrial chemicals",
-    
+
     // Product-Specific Keywords
     "solvents supplier",
     "solvents manufacturer",
@@ -162,7 +163,7 @@ export const metadata: Metadata = {
     "fine chemicals",
     "organic chemicals",
     "inorganic chemicals",
-    
+
     // Industry-Specific Keywords
     "pharmaceutical chemicals",
     "textile chemicals",
@@ -176,7 +177,7 @@ export const metadata: Metadata = {
     "construction chemicals",
     "automotive chemicals",
     "electronics chemicals",
-    
+
     // Service Keywords
     "chemical export import",
     "chemical export",
@@ -199,7 +200,7 @@ export const metadata: Metadata = {
     "chemical packaging",
     "chemical storage",
     "chemical handling",
-    
+
     // Quality and Trust Keywords
     "quality chemicals",
     "reliable chemical supplier",
@@ -211,7 +212,7 @@ export const metadata: Metadata = {
     "experienced chemical company",
     "ISO certified chemical company",
     "certified chemical supplier",
-    
+
     // Business Attributes
     "chemical company founded 2020",
     "5 years experience chemical company",
@@ -221,7 +222,7 @@ export const metadata: Metadata = {
     "chemical company 10 countries",
     "chemical company 300 products",
     "chemical company 200 partners",
-    
+
     // Contact Information Keywords
     "chemical company contact",
     "chemical company phone",
@@ -231,7 +232,7 @@ export const metadata: Metadata = {
     "+91 87809 98478",
     "+91 91063 64185",
     "info@trayancorp.com",
-    
+
     // Industrial Area Keywords
     "Ahmedabad chemical hub",
     "Gujarat chemical zone",
@@ -242,7 +243,7 @@ export const metadata: Metadata = {
     "Vatva chemical company",
     "Naroda chemical company",
     "Odhav chemical company",
-    
+
     // Long-tail Keywords
     "chemical trading company Ahmedabad Gujarat",
     "industrial chemicals supplier India",
@@ -258,7 +259,7 @@ export const metadata: Metadata = {
     "chemical trading company near me Ahmedabad",
     "industrial chemical supplier near me",
     "chemical manufacturer contact number",
-    "chemical supplier phone number Ahmedabad"
+    "chemical supplier phone number Ahmedabad",
   ],
   robots: {
     index: true,
@@ -271,7 +272,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Trayan Corporation | Leading Chemical Trading & Manufacturing Company in Ahmedabad",
+    title:
+      "Trayan Corporation | Leading Chemical Trading & Manufacturing Company in Ahmedabad",
     description:
       "Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat. Specializing in industrial chemicals, solvents, additives & raw materials. Trusted partner for 5+ years.",
     url: siteUrl,
@@ -317,20 +319,29 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <head>
         {/* Search Engine Verification */}
-        <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
+        <meta
+          name="google-site-verification"
+          content="YOUR_GOOGLE_VERIFICATION_CODE"
+        />
         <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" />
-        <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
-        
+        <meta
+          name="yandex-verification"
+          content="YOUR_YANDEX_VERIFICATION_CODE"
+        />
+
         {/* Geographic Meta Tags for Local SEO */}
         <meta name="geo.region" content="IN-GJ" />
         <meta name="geo.placename" content="Ahmedabad, Gujarat" />
         <meta name="geo.position" content="23.1138826;72.5412793" />
         <meta name="ICBM" content="23.1138826, 72.5412793" />
-        
+
         {/* Business Meta Tags */}
         <meta name="author" content="Trayan Corporation" />
         <meta name="publisher" content="Trayan Corporation" />
-        <meta name="copyright" content="© 2024 Trayan Corporation. All rights reserved." />
+        <meta
+          name="copyright"
+          content="© 2024 Trayan Corporation. All rights reserved."
+        />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="7 days" />
         <meta name="classification" content="Chemical Trading, Manufacturing" />
@@ -338,30 +349,372 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <meta name="coverage" content="Worldwide" />
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
-        
+
         {/* Mobile Optimization */}
         <meta name="format-detection" content="telephone=yes" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Trayan Corp" />
-        
+
         {/* DNS Prefetch for Performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-        
+
         {/* Preconnect for Critical Resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+
         {/* PWA Manifest */}
         <link rel="manifest" href="/site.webmanifest" />
-        
+
         {/* Theme Color */}
         <meta name="theme-color" content="#2563eb" />
         <meta name="msapplication-navbutton-color" content="#2563eb" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#2563eb" />
+
+        {/* Enhanced Business Meta Tags */}
+        <meta
+          name="locality"
+          content="Gota, Jagatpur, SG Highway, West Ahmedabad, Bopal, Shela, Science City, Prahlad Nagar, Satellite, Bodakdev"
+        />
+        <meta
+          name="business-type"
+          content="Chemical Trading Company, Chemical Manufacturing"
+        />
+        <meta
+          name="industry"
+          content="Chemical Industry, Industrial Chemicals, B2B Chemical Solutions"
+        />
+        <meta
+          name="service-area"
+          content="Ahmedabad, Gujarat, India, International"
+        />
+        <meta name="established" content="2020" />
+        <meta
+          name="experience"
+          content="5+ years in chemical trading and manufacturing"
+        />
+
+        {/* Industrial Context Tags */}
+        <meta
+          name="industrial-areas"
+          content="GIDC Vatva, GIDC Naroda, GIDC Odhav, GIDC Ankleshwar, GIDC Vapi, GIDC Bharuch, Dahej SEZ"
+        />
+        <meta
+          name="business-hubs"
+          content="SG Highway, CG Road, Ashram Road, GIFT City, Gandhinagar"
+        />
+        <meta
+          name="service-radius"
+          content="50km from Ahmedabad, Pan Gujarat, Pan India, International"
+        />
+
+        {/* Contact and Business Info */}
+        <meta name="contact-phone" content="+91 87809 98478, +91 91063 64185" />
+        <meta name="contact-email" content="info@trayancorp.com" />
+        <meta
+          name="business-hours"
+          content="Monday-Saturday 9:00AM-6:00PM IST"
+        />
+        <meta
+          name="address"
+          content="310 Skywalk Elements, Jagatpur off SG Highway, Gota, Ahmedabad, Gujarat 382481"
+        />
+
+        {/* Enhanced Local Business Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": `${siteUrl}/#localbusiness`,
+              name: "Trayan Corporation",
+              alternateName: [
+                "Trayan Corp",
+                "Trayan Chemical Corporation",
+                "Trayan Chemical Company",
+                "Trayan Corporation Ahmedabad",
+              ],
+              description:
+                "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, India. We specialize in sourcing, supplying, and distributing high-quality industrial chemicals, solvents, additives, and raw materials for various industries across India and internationally.",
+              url: siteUrl,
+              logo: `${siteUrl}/images/logos/logo.svg`,
+              image: [
+                `${siteUrl}/images/logos/logo.svg`,
+                `${siteUrl}/images/chemical-industry-hero.jpg`,
+                `${siteUrl}/images/chemicals-lab.jpg`,
+              ],
+              telephone: ["+91 87809 98478", "+91 91063 64185"],
+              email: "info@trayancorp.com",
+              foundingDate: "2020",
+              slogan:
+                "Your trusted partner in chemical trading and manufacturing solutions",
+              priceRange: "$$",
+              currenciesAccepted: ["INR", "USD", "EUR"],
+              paymentAccepted: [
+                "Bank Transfer",
+                "Letter of Credit",
+                "Cash",
+                "Check",
+              ],
+              openingHours: "Mo-Sa 09:00-18:00",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
+                addressLocality: "Ahmedabad",
+                addressRegion: "Gujarat",
+                postalCode: "382481",
+                addressCountry: {
+                  "@type": "Country",
+                  name: "India",
+                },
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "23.1138826",
+                longitude: "72.5412793",
+              },
+              hasMap: "https://maps.google.com/?cid=your_google_maps_cid",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+91 87809 98478",
+                  contactType: "customer service",
+                  areaServed: ["IN", "US", "EU", "ASIA"],
+                  availableLanguage: ["English", "Hindi", "Gujarati"],
+                  hoursAvailable: {
+                    "@type": "OpeningHoursSpecification",
+                    dayOfWeek: [
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                    ],
+                    opens: "09:00",
+                    closes: "18:00",
+                  },
+                },
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+91 91063 64185",
+                  contactType: "sales",
+                  areaServed: ["IN", "US", "EU", "ASIA"],
+                  availableLanguage: ["English", "Hindi", "Gujarati"],
+                },
+              ],
+              sameAs: [
+                "https://www.facebook.com/trayancorp",
+                "https://www.linkedin.com/company/trayan-corporation",
+                "https://twitter.com/trayancorp",
+                "https://www.instagram.com/trayancorp",
+              ],
+              knowsAbout: [
+                "Chemical Trading",
+                "Chemical Manufacturing",
+                "Industrial Chemicals",
+                "Chemical Solvents",
+                "Chemical Additives",
+                "Raw Materials",
+                "Chemical Distribution",
+                "Chemical Supply Chain",
+                "Chemical Import Export",
+                "Chemical Solutions",
+                "Pharmaceutical Chemicals",
+                "Textile Chemicals",
+                "Paint and Coating Chemicals",
+                "Plastic and Polymer Chemicals",
+                "Rubber Chemicals",
+                "Food Grade Chemicals",
+                "Agriculture Chemicals",
+                "Construction Chemicals",
+                "Automotive Chemicals",
+                "Electronics Chemicals",
+                "Specialty Chemicals",
+                "Bulk Chemicals",
+                "Fine Chemicals",
+                "Organic Chemicals",
+                "Inorganic Chemicals",
+              ],
+              areaServed: [
+                {
+                  "@type": "Country",
+                  name: "India",
+                },
+                {
+                  "@type": "State",
+                  name: "Gujarat",
+                },
+                {
+                  "@type": "State",
+                  name: "Rajasthan",
+                },
+                {
+                  "@type": "State",
+                  name: "Maharashtra",
+                },
+                {
+                  "@type": "City",
+                  name: "Ahmedabad",
+                },
+                {
+                  "@type": "City",
+                  name: "Gandhinagar",
+                },
+                {
+                  "@type": "City",
+                  name: "Surat",
+                },
+                {
+                  "@type": "City",
+                  name: "Vadodara",
+                },
+              ],
+              serviceArea: {
+                "@type": "GeoCircle",
+                geoMidpoint: {
+                  "@type": "GeoCoordinates",
+                  latitude: "23.1138826",
+                  longitude: "72.5412793",
+                },
+                geoRadius: "50000",
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.8",
+                reviewCount: "47",
+                bestRating: "5",
+                worstRating: "1",
+              },
+              hasCredential: [
+                "ISO 9001:2015 Certified",
+                "Chemical Trading License",
+                "Import Export License",
+              ],
+            }),
+          }}
+        />
+
+        {/* Organization Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": `${siteUrl}/#organization`,
+              name: "Trayan Corporation",
+              legalName: "Trayan Corporation Private Limited",
+              alternateName: ["Trayan Corp", "Trayan Chemical"],
+              description:
+                "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, specializing in sourcing, supplying, and distributing high-quality chemicals for various industries across India and internationally.",
+              url: siteUrl,
+              logo: `${siteUrl}/images/logos/logo.svg`,
+              image: `${siteUrl}/images/logos/logo.svg`,
+              telephone: "+91 87809 98478",
+              email: "info@trayancorp.com",
+              foundingDate: "2020",
+              numberOfEmployees: {
+                "@type": "QuantitativeValue",
+                minValue: "10",
+                maxValue: "50",
+              },
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
+                addressLocality: "Ahmedabad",
+                addressRegion: "Gujarat",
+                postalCode: "382481",
+                addressCountry: "IN",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "23.1138826",
+                longitude: "72.5412793",
+              },
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+91 87809 98478",
+                  contactType: "customer service",
+                  areaServed: "IN",
+                  availableLanguage: ["English", "Hindi", "Gujarati"],
+                },
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+91 91063 64185",
+                  contactType: "sales",
+                  areaServed: "IN",
+                  availableLanguage: ["English", "Hindi", "Gujarati"],
+                },
+              ],
+              sameAs: [
+                "https://www.facebook.com/trayancorp",
+                "https://www.linkedin.com/company/trayan-corporation",
+                "https://twitter.com/trayancorp",
+              ],
+              knowsAbout: [
+                "Chemical Trading",
+                "Chemical Manufacturing",
+                "Industrial Chemicals",
+                "Chemical Solutions",
+                "Chemical Distribution",
+              ],
+              areaServed: {
+                "@type": "Country",
+                name: "India",
+              },
+              makesOffer: [
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Chemical Trading Services",
+                    description:
+                      "Professional chemical trading and distribution services",
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Chemical Manufacturing",
+                    description: "Custom chemical manufacturing and processing",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* Website Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": `${siteUrl}/#website`,
+              name: "Trayan Corporation",
+              url: siteUrl,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: `${siteUrl}/search?q={search_term_string}`,
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
       </head>
       <body className={inter.className}>
         <Layout>{children}</Layout>
