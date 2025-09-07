@@ -5,9 +5,18 @@ import { motion } from "framer-motion";
 import { FaFlask } from "react-icons/fa";
 import { Product, products, productCategories } from "../constants/products";
 
-const ProductShowcase = () => {
+interface ProductShowcaseProps {
+  selectedProduct?: Product | null;
+  onProductSelect?: (product: Product) => void;
+  onModalClose?: () => void;
+}
+
+const ProductShowcase: React.FC<ProductShowcaseProps> = ({
+  selectedProduct = null,
+  onProductSelect,
+  onModalClose,
+}) => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const filteredProducts =
     activeCategory === "all"
@@ -67,7 +76,7 @@ const ProductShowcase = () => {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: (product.id * 0.05) % 0.5 }}
               className="flex flex-col items-start bg-white rounded-md shadow-soft overflow-hidden hover:shadow-hard hover:shadow-glow transition-all duration-300 h-full border border-gray-100"
-              onClick={() => setSelectedProduct(product)}
+              onClick={() => onProductSelect?.(product)}
             >
               <div className="w-full">
                 <div
@@ -194,7 +203,7 @@ const ProductShowcase = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedProduct(product);
+                      onProductSelect?.(product);
                     }}
                     className={`text-sm font-semibold flex items-center rounded-full px-3 py-1
                       ${
@@ -390,7 +399,7 @@ const ProductShowcase = () => {
                   </p>
                 </div>
                 <button
-                  onClick={() => setSelectedProduct(null)}
+                  onClick={() => onModalClose?.()}
                   className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md"
                 >
                   <svg

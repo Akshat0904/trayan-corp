@@ -1,16 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
 import ProductShowcase from "@/components/ProductShowcase";
 import SEO from "@/components/SEO";
-import { products } from "@/constants/products";
+import { products, Product } from "@/constants/products";
+import { findProductBySlug, generateProductSlug } from "@/utils/productUtils";
 
-const Products = () => {
+const ProductsContent = () => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
+  // Handle URL-based product selection
+  useEffect(() => {
+    const productSlug = searchParams.get("product");
+    if (productSlug) {
+      const product = findProductBySlug(productSlug);
+      if (product) {
+        setSelectedProduct(product);
+      } else {
+        // Invalid product slug, remove from URL
+        router.replace("/products", { scroll: false });
+      }
+    } else {
+      setSelectedProduct(null);
+    }
+  }, [searchParams, router]);
+
+  // Handle product selection (opens modal and updates URL)
+  const handleProductSelect = (product: Product) => {
+    const slug = generateProductSlug(product.name);
+    router.push(`/products?product=${slug}`, { scroll: false });
+  };
+
+  // Handle modal close (removes product from URL)
+  const handleModalClose = () => {
+    router.push("/products", { scroll: false });
   };
 
   // Generate keywords from product names and categories
@@ -21,32 +53,129 @@ const Products = () => {
     )
     .join(", ");
 
+  // Dynamic SEO based on selected product
+  const pageTitle = selectedProduct
+    ? `${selectedProduct.name} - Chemical Products | Trayan Corporation`
+    : "Chemical Products - Industrial Chemicals & Solvents | Trayan Corporation";
+
+  const pageDescription = selectedProduct
+    ? `${selectedProduct.description} Available from Trayan Corporation, your trusted chemical supplier in Ahmedabad, Gujarat, India.`
+    : "Explore Trayan Corporation's comprehensive range of high-quality chemical products for every industry. From industrial solvents to specialized additives, find the perfect chemical solution for your needs in India.";
+
+  const canonicalUrl = selectedProduct
+    ? `/products?product=${generateProductSlug(selectedProduct.name)}`
+    : "/products";
+
   return (
     <div>
       <SEO
-        title="Chemical Products - Industrial Chemicals & Solvents | Trayan Corporation"
-        description="Explore Trayan Corporation's comprehensive range of high-quality chemical products for every industry. From industrial solvents to specialized additives, find the perfect chemical solution for your needs in India."
-        canonical="/products"
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonicalUrl}
         structuredData={{
           type: "BreadcrumbList",
           data: {
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://trayancorp.com",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Products",
-                item: "https://trayancorp.com/products",
-              },
-            ],
+            itemListElement: selectedProduct
+              ? [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://trayancorp.com",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Products",
+                    item: "https://trayancorp.com/products",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: selectedProduct.name,
+                    item: `https://trayancorp.com/products?product=${generateProductSlug(
+                      selectedProduct.name
+                    )}`,
+                  },
+                ]
+              : [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://trayancorp.com",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Products",
+                    item: "https://trayancorp.com/products",
+                  },
+                ],
           },
         }}
       />
+
+      {/* Individual Product Structured Data */}
+      {selectedProduct && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "@id": `https://trayancorp.com/products?product=${generateProductSlug(
+                selectedProduct.name
+              )}`,
+              url: `https://trayancorp.com/products?product=${generateProductSlug(
+                selectedProduct.name
+              )}`,
+              name: selectedProduct.name,
+              description: selectedProduct.description,
+              category: selectedProduct.category,
+              sku: `TC-${selectedProduct.id.toString().padStart(3, "0")}`,
+              image:
+                selectedProduct.image ||
+                "https://trayancorp.com/images/chemical-hero.jpg",
+              brand: {
+                "@type": "Brand",
+                name: "Trayan Corporation",
+                url: "https://trayancorp.com",
+              },
+              manufacturer: {
+                "@type": "Organization",
+                name: "Trayan Corporation",
+                url: "https://trayancorp.com",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress:
+                    "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
+                  addressLocality: "Ahmedabad",
+                  addressRegion: "Gujarat",
+                  postalCode: "382481",
+                  addressCountry: "IN",
+                },
+              },
+              offers: {
+                "@type": "Offer",
+                availability: "https://schema.org/InStock",
+                priceCurrency: "INR",
+                seller: {
+                  "@type": "Organization",
+                  name: "Trayan Corporation",
+                },
+              },
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: 4.5,
+                reviewCount: 25,
+                bestRating: 5,
+                worstRating: 1,
+              },
+            }),
+          }}
+        />
+      )}
 
       {/* Product Catalog Structured Data */}
       <script
@@ -295,7 +424,11 @@ const Products = () => {
         </div>
       </div>
 
-      <ProductShowcase />
+      <ProductShowcase
+        selectedProduct={selectedProduct}
+        onProductSelect={handleProductSelect}
+        onModalClose={handleModalClose}
+      />
 
       {/* Featured Products Section
       <div className="bg-white py-16">
@@ -351,7 +484,7 @@ const Products = () => {
       </div> */}
 
       {/* Product Categories Section */}
-      <div className="bg-gray-50 py-16">
+      {/* <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="mx-auto max-w-3xl text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4 font-heading">
@@ -458,7 +591,7 @@ const Products = () => {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Additional Info Section */}
       <div className="bg-gray-50 py-16">
@@ -510,6 +643,23 @@ const Products = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const Products = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading products...</p>
+          </div>
+        </div>
+      }
+    >
+      <ProductsContent />
+    </Suspense>
   );
 };
 

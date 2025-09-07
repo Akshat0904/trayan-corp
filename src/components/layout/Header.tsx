@@ -129,7 +129,7 @@ const Header = () => {
               transition={{ delay: 0.4, duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="#"
+              href="/contact"
               className="bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-soft transition-all duration-200 hover:shadow-glow"
             >
               Get a Quote
@@ -186,7 +186,7 @@ const Header = () => {
                 })}
                 <div className="p-4">
                   <a
-                    href="#"
+                    href="/contact"
                     className="block w-full text-center bg-primary-600 hover:bg-primary-500 text-white px-4 py-3 rounded-md text-base font-semibold shadow-soft"
                     onClick={() => setMobileMenuOpen(false)}
                   >
