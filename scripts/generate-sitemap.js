@@ -53,6 +53,8 @@ function main() {
     "/products": path.join(root, "src", "app", "products", "page.tsx"),
     "/business": path.join(root, "src", "app", "business", "page.tsx"),
     "/contact": path.join(root, "src", "app", "contact", "page.tsx"),
+    "/privacy": path.join(root, "src", "app", "privacy", "page.tsx"),
+    "/terms": path.join(root, "src", "app", "terms", "page.tsx"),
   };
 
   const entries = Object.entries(routeToFile).map(([route, filePath]) => {

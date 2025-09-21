@@ -23,48 +23,74 @@ const Home = () => {
     // Set comprehensive meta tags for better SEO
     const metaTags = [
       // Geographic Tags for Local SEO
-      { name: 'geo.region', content: 'IN-GJ' },
-      { name: 'geo.placename', content: 'Ahmedabad, Gujarat' },
-      { name: 'geo.position', content: '23.1138826;72.5412793' },
-      { name: 'ICBM', content: '23.1138826, 72.5412793' },
-      
+      { name: "geo.region", content: "IN-GJ" },
+      { name: "geo.placename", content: "Ahmedabad, Gujarat" },
+      { name: "geo.position", content: "23.1138826;72.5412793" },
+      { name: "ICBM", content: "23.1138826, 72.5412793" },
+
       // Comprehensive Keywords for Maximum Search Visibility
-      { name: 'keywords', content: 'Trayan Corporation, Trayan Corp, Trayan Chemical Corporation, Trayan Chemical Company, chemical trading, chemical manufacturing, chemical suppliers, chemical distributor, chemical solutions, industrial chemicals, chemical business, chemical industry, chemical company, chemical trading company, chemical manufacturing company, chemical supplier company, chemical distributor company, Ahmedabad chemical company, Gujarat chemical company, chemical company Ahmedabad, chemical company Gujarat, chemical suppliers Ahmedabad, chemical suppliers Gujarat, chemical trading Ahmedabad, chemical trading Gujarat, chemical manufacturing Ahmedabad, chemical manufacturing Gujarat, chemical distributor Ahmedabad, chemical distributor Gujarat, industrial chemicals Ahmedabad, industrial chemicals Gujarat, chemical solutions Ahmedabad, chemical solutions Gujarat, Gota chemical company, Jagatpur chemical company, SG Highway chemical company, Skywalk Elements chemical company, chemical company Gota Ahmedabad, chemical company Jagatpur Ahmedabad, chemical company SG Highway Ahmedabad, chemical suppliers near me, chemical company near me, chemical trading company near me, chemical manufacturers near me, chemical distributors near me, 382481 chemical company, chemical company 382481, Ahmedabad chemical suppliers, Gujarat chemical suppliers, Ahmedabad chemical manufacturers, Gujarat chemical manufacturers, Ahmedabad chemical distributors, Gujarat chemical distributors, Ahmedabad industrial chemicals, Gujarat industrial chemicals, West Ahmedabad chemical company, North Ahmedabad chemical company, chemical company west Ahmedabad, chemical company north Ahmedabad, solvents supplier, additives manufacturer, raw materials distributor, chemical raw materials, chemical solvents, chemical additives, industrial solvents, industrial additives, industrial raw materials, chemical export, chemical import, chemical export import, chemical trading business, chemical supply chain, chemical logistics, chemical procurement, chemical sourcing, quality chemicals, reliable chemical supplier, trusted chemical company, leading chemical company, top chemical company, best chemical company, chemical company India, India chemical company, chemical suppliers India, India chemical suppliers, chemical manufacturers India, India chemical manufacturers, chemical distributors India, India chemical distributors, chemical trading India, India chemical trading, chemical solutions India, India chemical solutions, chemical business India, India chemical business, chemical industry India, India chemical industry, Trayan Corporation Ahmedabad, Trayan Corporation Gujarat, Trayan Corporation India, Ahmedabad Trayan Corporation, Gujarat Trayan Corporation, India Trayan Corporation, chemical company founded 2020, established chemical company, experienced chemical company, 5 years experience chemical company, global chemical supplier, international chemical supplier, worldwide chemical supplier, chemical company 10 countries, chemical company 300 products, chemical company 200 partners, pharmaceutical chemicals, textile chemicals, paint chemicals, coating chemicals, plastic chemicals, rubber chemicals, food processing chemicals, agriculture chemicals, manufacturing chemicals, specialty chemicals, bulk chemicals, fine chemicals, organic chemicals, inorganic chemicals, chemical consultation, chemical technical support, chemical quality control, chemical testing, chemical certification, chemical standards, ISO certified chemical company, chemical safety, chemical compliance, chemical regulations, chemical documentation, chemical specifications, chemical data sheets, chemical analysis, chemical research, chemical development, custom chemicals, chemical formulation, chemical blending, chemical processing, chemical packaging, chemical storage, chemical handling, chemical transportation, chemical delivery, chemical supply, chemical inventory, chemical management, Ahmedabad chemical hub, Gujarat chemical zone, chemical park Ahmedabad, chemical cluster Gujarat, GIDC chemical company, industrial area chemical company, chemical company contact, chemical company phone, chemical company email, chemical company address, chemical company location, +91 87809 98478, +91 91063 64185, info@trayancorp.com, 310 Skywalk Elements, Jagatpur off SG Highway, Gota Ahmedabad Gujarat' },
-      
+      {
+        name: "keywords",
+        content:
+          "Trayan Corporation, Trayan Corp, Trayan Chemical Corporation, Trayan Chemical Company, chemical trading, chemical manufacturing, chemical suppliers, chemical distributor, chemical solutions, industrial chemicals, chemical business, chemical industry, chemical company, chemical trading company, chemical manufacturing company, chemical supplier company, chemical distributor company, Ahmedabad chemical company, Gujarat chemical company, chemical company Ahmedabad, chemical company Gujarat, chemical suppliers Ahmedabad, chemical suppliers Gujarat, chemical trading Ahmedabad, chemical trading Gujarat, chemical manufacturing Ahmedabad, chemical manufacturing Gujarat, chemical distributor Ahmedabad, chemical distributor Gujarat, industrial chemicals Ahmedabad, industrial chemicals Gujarat, chemical solutions Ahmedabad, chemical solutions Gujarat, Gota chemical company, Jagatpur chemical company, SG Highway chemical company, Skywalk Elements chemical company, chemical company Gota Ahmedabad, chemical company Jagatpur Ahmedabad, chemical company SG Highway Ahmedabad, chemical suppliers near me, chemical company near me, chemical trading company near me, chemical manufacturers near me, chemical distributors near me, 382481 chemical company, chemical company 382481, Ahmedabad chemical suppliers, Gujarat chemical suppliers, Ahmedabad chemical manufacturers, Gujarat chemical manufacturers, Ahmedabad chemical distributors, Gujarat chemical distributors, Ahmedabad industrial chemicals, Gujarat industrial chemicals, West Ahmedabad chemical company, North Ahmedabad chemical company, chemical company west Ahmedabad, chemical company north Ahmedabad, solvents supplier, additives manufacturer, raw materials distributor, chemical raw materials, chemical solvents, chemical additives, industrial solvents, industrial additives, industrial raw materials, chemical export, chemical import, chemical export import, chemical trading business, chemical supply chain, chemical logistics, chemical procurement, chemical sourcing, quality chemicals, reliable chemical supplier, trusted chemical company, leading chemical company, top chemical company, best chemical company, chemical company India, India chemical company, chemical suppliers India, India chemical suppliers, chemical manufacturers India, India chemical manufacturers, chemical distributors India, India chemical distributors, chemical trading India, India chemical trading, chemical solutions India, India chemical solutions, chemical business India, India chemical business, chemical industry India, India chemical industry, Trayan Corporation Ahmedabad, Trayan Corporation Gujarat, Trayan Corporation India, Ahmedabad Trayan Corporation, Gujarat Trayan Corporation, India Trayan Corporation, chemical company founded 2020, established chemical company, experienced chemical company, 5 years experience chemical company, global chemical supplier, international chemical supplier, worldwide chemical supplier, chemical company 10 countries, chemical company 300 products, chemical company 200 partners, pharmaceutical chemicals, textile chemicals, paint chemicals, coating chemicals, plastic chemicals, rubber chemicals, food processing chemicals, agriculture chemicals, manufacturing chemicals, specialty chemicals, bulk chemicals, fine chemicals, organic chemicals, inorganic chemicals, chemical consultation, chemical technical support, chemical quality control, chemical testing, chemical certification, chemical standards, ISO certified chemical company, chemical safety, chemical compliance, chemical regulations, chemical documentation, chemical specifications, chemical data sheets, chemical analysis, chemical research, chemical development, custom chemicals, chemical formulation, chemical blending, chemical processing, chemical packaging, chemical storage, chemical handling, chemical transportation, chemical delivery, chemical supply, chemical inventory, chemical management, Ahmedabad chemical hub, Gujarat chemical zone, chemical park Ahmedabad, chemical cluster Gujarat, GIDC chemical company, industrial area chemical company, chemical company contact, chemical company phone, chemical company email, chemical company address, chemical company location, +91 87809 98478, +91 91063 64185, info@trayancorp.com, 310 Skywalk Elements, Jagatpur off SG Highway, Gota Ahmedabad Gujarat",
+      },
+
       // Robots meta tag
-      { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
-      
+      {
+        name: "robots",
+        content:
+          "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+      },
+
       // Additional SEO tags
-      { name: 'author', content: 'Trayan Corporation' },
-      { name: 'publisher', content: 'Trayan Corporation' },
-      { name: 'language', content: 'English' },
-      { name: 'revisit-after', content: '7 days' },
-      
+      { name: "author", content: "Trayan Corporation" },
+      { name: "publisher", content: "Trayan Corporation" },
+      { name: "language", content: "English" },
+      { name: "revisit-after", content: "7 days" },
+
       // Extended Location Keywords for Local SEO
-      { name: 'locality', content: 'Gota, Jagatpur, SG Highway, West Ahmedabad, Bopal, Shela, Science City, Prahlad Nagar' },
-      { name: 'region', content: 'Ahmedabad, Gujarat, Western India' },
-      { name: 'postal-code', content: '382481' },
-      { name: 'country-name', content: 'India' },
-      
+      {
+        name: "locality",
+        content:
+          "Gota, Jagatpur, SG Highway, West Ahmedabad, Bopal, Shela, Science City, Prahlad Nagar",
+      },
+      { name: "region", content: "Ahmedabad, Gujarat, Western India" },
+      { name: "postal-code", content: "382481" },
+      { name: "country-name", content: "India" },
+
       // Business specific tags
-      { name: 'classification', content: 'Chemical Trading, Manufacturing' },
-      { name: 'category', content: 'Chemical Industry' },
-      { name: 'coverage', content: 'Worldwide' },
-      { name: 'distribution', content: 'Global' },
-      { name: 'rating', content: 'General' },
-      
+      { name: "classification", content: "Chemical Trading, Manufacturing" },
+      { name: "category", content: "Chemical Industry" },
+      { name: "coverage", content: "Worldwide" },
+      { name: "distribution", content: "Global" },
+      { name: "rating", content: "General" },
+
       // Nearby Landmarks and Industrial Areas
-      { name: 'nearby-landmarks', content: 'GIFT City, Gandhinagar, PDEU University, Nirma University, Adani Wilmar, Torrent Power, Reliance Industries, Gujarat Gas, ONGC, IOCL, GSFC' },
-      { name: 'industrial-areas', content: 'GIDC Vatva, GIDC Naroda, GIDC Odhav, GIDC Ankleshwar, GIDC Vapi, GIDC Bharuch, Dahej SEZ, Mundra Port, JNPT, Kandla Port' },
-      { name: 'business-districts', content: 'SG Highway, CG Road, Ashram Road, Paldi, Navrangpura, Vastrapur, Satellite, Bodakdev, Thaltej, Ambawadi' },
+      {
+        name: "nearby-landmarks",
+        content:
+          "GIFT City, Gandhinagar, PDEU University, Nirma University, Adani Wilmar, Torrent Power, Reliance Industries, Gujarat Gas, ONGC, IOCL, GSFC",
+      },
+      {
+        name: "industrial-areas",
+        content:
+          "GIDC Vatva, GIDC Naroda, GIDC Odhav, GIDC Ankleshwar, GIDC Vapi, GIDC Bharuch, Dahej SEZ, Mundra Port, JNPT, Kandla Port",
+      },
+      {
+        name: "business-districts",
+        content:
+          "SG Highway, CG Road, Ashram Road, Paldi, Navrangpura, Vastrapur, Satellite, Bodakdev, Thaltej, Ambawadi",
+      },
     ];
 
-    metaTags.forEach(tag => {
-      let meta = document.querySelector(`meta[name="${tag.name}"]`) as HTMLMetaElement;
+    metaTags.forEach((tag) => {
+      let meta = document.querySelector(
+        `meta[name="${tag.name}"]`
+      ) as HTMLMetaElement;
       if (meta) {
         meta.content = tag.content;
       } else {
-        meta = document.createElement('meta');
+        meta = document.createElement("meta");
         meta.name = tag.name;
         meta.content = tag.content;
         document.head.appendChild(meta);
@@ -73,16 +99,16 @@ const Home = () => {
 
     // Set viewport meta tag if not exists
     if (!document.querySelector('meta[name="viewport"]')) {
-      const viewport = document.createElement('meta');
-      viewport.name = 'viewport';
-      viewport.content = 'width=device-width, initial-scale=1.0';
+      const viewport = document.createElement("meta");
+      viewport.name = "viewport";
+      viewport.content = "width=device-width, initial-scale=1.0";
       document.head.appendChild(viewport);
     }
 
-    // Set charset meta tag if not exists  
-    if (!document.querySelector('meta[charset]')) {
-      const charset = document.createElement('meta');
-      charset.setAttribute('charset', 'UTF-8');
+    // Set charset meta tag if not exists
+    if (!document.querySelector("meta[charset]")) {
+      const charset = document.createElement("meta");
+      charset.setAttribute("charset", "UTF-8");
       document.head.insertBefore(charset, document.head.firstChild);
     }
   }, []);
@@ -133,7 +159,7 @@ const Home = () => {
           type: "WebSite",
           data: {
             name: "Trayan Corporation",
-            url: "https://trayancorp.com"
+            url: "https://trayancorp.com",
           },
         }}
       />
@@ -151,39 +177,47 @@ const Home = () => {
               "Trayan Corp",
               "Trayan Chemical Corporation",
               "Trayan Chemical Company",
-              "Trayan Corporation Ahmedabad"
+              "Trayan Corporation Ahmedabad",
             ],
-            description: "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, India. We specialize in sourcing, supplying, and distributing high-quality industrial chemicals, solvents, additives, and raw materials for various industries across India and internationally.",
+            description:
+              "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, India. We specialize in sourcing, supplying, and distributing high-quality industrial chemicals, solvents, additives, and raw materials for various industries across India and internationally.",
             url: "https://trayancorp.com",
             logo: "https://trayancorp.com/images/logos/logo.svg",
             image: [
               "https://trayancorp.com/images/logos/logo.svg",
               "https://trayancorp.com/images/chemical-industry-hero.jpg",
-              "https://trayancorp.com/images/chemicals-lab.jpg"
+              "https://trayancorp.com/images/chemicals-lab.jpg",
             ],
             telephone: ["+91 87809 98478", "+91 91063 64185"],
             email: "info@trayancorp.com",
             foundingDate: "2020",
-            slogan: "Your trusted partner in chemical trading and manufacturing solutions",
+            slogan:
+              "Your trusted partner in chemical trading and manufacturing solutions",
             priceRange: "$$",
             currenciesAccepted: ["INR", "USD", "EUR"],
-            paymentAccepted: ["Bank Transfer", "Letter of Credit", "Cash", "Check"],
+            paymentAccepted: [
+              "Bank Transfer",
+              "Letter of Credit",
+              "Cash",
+              "Check",
+            ],
             openingHours: "Mo-Sa 09:00-18:00",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
+              streetAddress:
+                "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
               addressLocality: "Ahmedabad",
               addressRegion: "Gujarat",
               postalCode: "382481",
               addressCountry: {
                 "@type": "Country",
-                name: "India"
-              }
+                name: "India",
+              },
             },
             geo: {
               "@type": "GeoCoordinates",
               latitude: "23.1138826",
-              longitude: "72.5412793"
+              longitude: "72.5412793",
             },
             hasMap: "https://maps.google.com/?cid=your_google_maps_cid",
             contactPoint: [
@@ -195,24 +229,31 @@ const Home = () => {
                 availableLanguage: ["English", "Hindi", "Gujarati"],
                 hoursAvailable: {
                   "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ],
                   opens: "09:00",
-                  closes: "18:00"
-                }
+                  closes: "18:00",
+                },
               },
               {
                 "@type": "ContactPoint",
                 telephone: "+91 91063 64185",
                 contactType: "sales",
                 areaServed: ["IN", "US", "EU", "ASIA"],
-                availableLanguage: ["English", "Hindi", "Gujarati"]
-              }
+                availableLanguage: ["English", "Hindi", "Gujarati"],
+              },
             ],
             sameAs: [
               "https://www.facebook.com/trayancorp",
               "https://www.linkedin.com/company/trayan-corporation",
               "https://twitter.com/trayancorp",
-              "https://www.instagram.com/trayancorp"
+              "https://www.instagram.com/trayancorp",
             ],
             knowsAbout: [
               "Chemical Trading",
@@ -263,111 +304,111 @@ const Home = () => {
               "Custom Chemical Manufacturing",
               "Chemical Research and Development",
               "Chemical Market Intelligence",
-              "Chemical Regulatory Affairs"
+              "Chemical Regulatory Affairs",
             ],
             areaServed: [
               {
                 "@type": "Country",
-                name: "India"
+                name: "India",
               },
               {
                 "@type": "State",
-                name: "Gujarat"
+                name: "Gujarat",
               },
               {
                 "@type": "State",
-                name: "Rajasthan"
-              },
-              {
-                "@type": "State", 
-                name: "Maharashtra"
+                name: "Rajasthan",
               },
               {
                 "@type": "State",
-                name: "Madhya Pradesh"
+                name: "Maharashtra",
+              },
+              {
+                "@type": "State",
+                name: "Madhya Pradesh",
               },
               {
                 "@type": "City",
-                name: "Ahmedabad"
+                name: "Ahmedabad",
               },
               {
                 "@type": "City",
-                name: "Gandhinagar"
+                name: "Gandhinagar",
               },
               {
                 "@type": "City",
-                name: "Surat"
+                name: "Surat",
               },
               {
                 "@type": "City",
-                name: "Vadodara"
+                name: "Vadodara",
               },
               {
                 "@type": "City",
-                name: "Rajkot"
+                name: "Rajkot",
               },
               {
                 "@type": "City",
-                name: "Bharuch"
+                name: "Bharuch",
               },
               {
                 "@type": "City",
-                name: "Ankleshwar"
-              },
-              {
-                "@type": "City", 
-                name: "Vapi"
+                name: "Ankleshwar",
               },
               {
                 "@type": "City",
-                name: "Mumbai"
+                name: "Vapi",
               },
               {
                 "@type": "City",
-                name: "Pune"
+                name: "Mumbai",
               },
               {
                 "@type": "City",
-                name: "Delhi"
+                name: "Pune",
               },
               {
                 "@type": "City",
-                name: "Chennai"
+                name: "Delhi",
               },
               {
                 "@type": "City",
-                name: "Bangalore"
+                name: "Chennai",
               },
               {
                 "@type": "City",
-                name: "Hyderabad"
+                name: "Bangalore",
               },
               {
                 "@type": "City",
-                name: "Kolkata"
-              }
+                name: "Hyderabad",
+              },
+              {
+                "@type": "City",
+                name: "Kolkata",
+              },
             ],
             serviceArea: {
               "@type": "GeoCircle",
               geoMidpoint: {
                 "@type": "GeoCoordinates",
                 latitude: "23.1138826",
-                longitude: "72.5412793"
+                longitude: "72.5412793",
               },
-              geoRadius: "50000"
+              geoRadius: "50000",
             },
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "4.8",
               reviewCount: "47",
               bestRating: "5",
-              worstRating: "1"
+              worstRating: "1",
             },
             hasCredential: [
               "ISO 9001:2015 Certified",
               "Chemical Trading License",
-              "Import Export License"
-            ]
+              "Import Export License",
+            ],
           }),
         }}
       />
@@ -383,7 +424,8 @@ const Home = () => {
             name: "Trayan Corporation",
             legalName: "Trayan Corporation Private Limited",
             alternateName: ["Trayan Corp", "Trayan Chemical"],
-            description: "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, specializing in sourcing, supplying, and distributing high-quality chemicals for various industries across India and internationally.",
+            description:
+              "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, specializing in sourcing, supplying, and distributing high-quality chemicals for various industries across India and internationally.",
             url: "https://trayancorp.com",
             logo: "https://trayancorp.com/images/logos/logo.svg",
             image: "https://trayancorp.com/images/logos/logo.svg",
@@ -393,12 +435,13 @@ const Home = () => {
             numberOfEmployees: {
               "@type": "QuantitativeValue",
               minValue: "10",
-              maxValue: "50"
+              maxValue: "50",
             },
             address: {
               "@type": "PostalAddress",
-              streetAddress: "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
-              addressLocality: "Ahmedabad", 
+              streetAddress:
+                "310 - Skywalk The Elements, Jagatpur, off SG Highway, Gota",
+              addressLocality: "Ahmedabad",
               addressRegion: "Gujarat",
               postalCode: "382481",
               addressCountry: "IN",
@@ -446,18 +489,19 @@ const Home = () => {
                 itemOffered: {
                   "@type": "Service",
                   name: "Chemical Trading Services",
-                  description: "Professional chemical trading and distribution services"
-                }
+                  description:
+                    "Professional chemical trading and distribution services",
+                },
               },
               {
                 "@type": "Offer",
                 itemOffered: {
-                  "@type": "Service", 
+                  "@type": "Service",
                   name: "Chemical Manufacturing",
-                  description: "Custom chemical manufacturing and processing"
-                }
-              }
-            ]
+                  description: "Custom chemical manufacturing and processing",
+                },
+              },
+            ],
           }),
         }}
       />
@@ -535,9 +579,9 @@ const Home = () => {
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://trayancorp.com/"
-              }
-            ]
+                item: "https://trayancorp.com/",
+              },
+            ],
           }),
         }}
       />
@@ -711,6 +755,217 @@ const Home = () => {
         </div>
       </motion.div>
 
+      {/* Site Navigation Section for SEO */}
+      <div className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Explore Our Website
+            </h2>
+            <p className="mt-2 text-lg leading-8 text-gray-600">
+              Discover all aspects of our chemical trading and manufacturing
+              services
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <Link
+                  href="/about"
+                  className="hover:text-primary-600 transition-colors"
+                >
+                  About Trayan Corporation
+                </Link>
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Learn about our journey, vision, and commitment to quality in
+                chemical trading since 2020.
+              </p>
+              <Link
+                href="/about"
+                className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+              >
+                Read Our Story
+                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <Link
+                  href="/products"
+                  className="hover:text-primary-600 transition-colors"
+                >
+                  Chemical Products Catalog
+                </Link>
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Browse our comprehensive range of 300+ chemical products for
+                various industries.
+              </p>
+              <Link
+                href="/products"
+                className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+              >
+                View Products
+                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <Link
+                  href="/business"
+                  className="hover:text-primary-600 transition-colors"
+                >
+                  Business Services
+                </Link>
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Discover our chemical trading, manufacturing, and technical
+                support services.
+              </p>
+              <Link
+                href="/business"
+                className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+              >
+                Our Services
+                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <Link
+                  href="/contact"
+                  className="hover:text-primary-600 transition-colors"
+                >
+                  Contact Information
+                </Link>
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Get in touch with our team in Ahmedabad for inquiries and
+                quotes.
+              </p>
+              <Link
+                href="/contact"
+                className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+              >
+                Contact Us
+                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                <Link
+                  href="/privacy"
+                  className="hover:text-primary-600 transition-colors"
+                >
+                  Privacy & Legal
+                </Link>
+              </h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Review our privacy policy and terms of service for transparency.
+              </p>
+              <div className="flex flex-col space-y-2">
+                <Link
+                  href="/privacy"
+                  className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+                >
+                  Privacy Policy
+                  <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+                <Link
+                  href="/terms"
+                  className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+                >
+                  Terms of Service
+                  <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="bg-primary-50 border border-primary-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+            >
+              <h3 className="text-lg font-semibold text-primary-800 mb-3">
+                Quick Access
+              </h3>
+              <p className="text-primary-700 text-sm mb-4">
+                Fast links to important information and resources.
+              </p>
+              <div className="flex flex-col space-y-2">
+                <a
+                  href="tel:+918780998478"
+                  className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+                >
+                  Call +91 87809 98478
+                  <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+                <a
+                  href="mailto:info@trayancorp.com"
+                  className="text-primary-600 hover:text-primary-700 text-sm font-medium group flex items-center"
+                >
+                  Email Us
+                  <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
       {/* Features Section */}
       <motion.div ref={featuresRef} className="py-24 sm:py-32 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -847,10 +1102,10 @@ const Home = () => {
               Let&apos;s discuss how our chemical solutions can address your
               specific needs and help you achieve your business goals.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
               <Link
                 href="/contact"
-                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-primary-700 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all duration-300"
+                className="rounded-md bg-white px-4 py-3 text-sm font-semibold text-primary-700 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all duration-300"
               >
                 Contact Us Today
               </Link>
@@ -859,6 +1114,24 @@ const Home = () => {
                 className="text-sm font-semibold leading-6 text-white hover:text-primary-200 transition-colors duration-300 group flex items-center"
               >
                 Browse Products{" "}
+                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+              <Link
+                href="/about"
+                className="text-sm font-semibold leading-6 text-white hover:text-primary-200 transition-colors duration-300 group flex items-center"
+              >
+                Learn About Us{" "}
+                <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+              <Link
+                href="/business"
+                className="text-sm font-semibold leading-6 text-white hover:text-primary-200 transition-colors duration-300 group flex items-center"
+              >
+                Our Services{" "}
                 <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

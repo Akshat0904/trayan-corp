@@ -217,11 +217,6 @@ const ProductsContent = () => {
                 review: [
                   {
                     "@type": "Review",
-                    reviewRating: {
-                      "@type": "Rating",
-                      ratingValue: 5,
-                      bestRating: 5,
-                    },
                     author: {
                       "@type": "Organization",
                       name: "Industrial Chemical Users",
