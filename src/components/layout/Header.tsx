@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 import Logo from "../../../public/images/logos/logo.svg";
 
 const navigation = [
@@ -20,6 +21,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { openModal } = useEnquiry();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,17 +125,17 @@ const Header = () => {
             })}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <motion.a
+            <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/contact"
+              onClick={() => openModal("header")}
               className="bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-md text-sm font-semibold shadow-soft transition-all duration-200 hover:shadow-glow"
             >
               Get a Quote
-            </motion.a>
+            </motion.button>
           </div>
         </nav>
       </header>
@@ -185,13 +187,15 @@ const Header = () => {
                   );
                 })}
                 <div className="p-4">
-                  <a
-                    href="/contact"
+                  <button
+                    onClick={() => {
+                      openModal("header");
+                      setMobileMenuOpen(false);
+                    }}
                     className="block w-full text-center bg-primary-600 hover:bg-primary-500 text-white px-4 py-3 rounded-md text-base font-semibold shadow-soft"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Get a Quote
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>

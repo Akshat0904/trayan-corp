@@ -7,9 +7,12 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 import SEO from "@/components/SEO";
 
 const Contact = () => {
+  const { openModal } = useEnquiry();
+
   return (
     <div>
       <SEO
@@ -69,8 +72,17 @@ const Contact = () => {
               Get in Touch
             </h2>
             <p className="mt-2 text-lg leading-8 text-gray-600">
-              Reach out to us through any of these channels
+              Reach out to us through any of these channels or send us an
+              enquiry
             </p>
+            <div className="mt-8">
+              <button
+                onClick={() => openModal("contact")}
+                className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-md text-base font-semibold shadow-soft transition-all duration-300 hover:shadow-glow"
+              >
+                Send Enquiry
+              </button>
+            </div>
           </div>
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <motion.div

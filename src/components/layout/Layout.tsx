@@ -3,6 +3,8 @@
 import React, { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import { EnquiryProvider } from "@/contexts/EnquiryContext";
+import EnquiryModal from "@/components/EnquiryModal";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,11 +12,14 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header />
-      <main className="flex-grow">{children}</main>
-      <Footer />
-    </div>
+    <EnquiryProvider>
+      <div className="min-h-screen flex flex-col bg-white">
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+        <EnquiryModal />
+      </div>
+    </EnquiryProvider>
   );
 };
 

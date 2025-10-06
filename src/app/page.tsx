@@ -591,8 +591,8 @@ const Home = () => {
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
-            backgroundImage: 'url("/images/jason-jeandron.jpg")',
-            backgroundPosition: "center 25%",
+            backgroundImage: 'url("/images/trayan-industry-2.webp")',
+            backgroundPosition: "center 100%",
             backgroundSize: "cover",
             height: "100%",
             width: "100%",
