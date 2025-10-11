@@ -12,7 +12,7 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "/images/logos/logo.svg",
+      "src": "/images/logos/Tryan-blue.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -28,7 +28,13 @@
       "type": "image/png"
     }
   ],
-  "categories": ["business", "productivity", "chemical", "manufacturing", "trading"],
+  "categories": [
+    "business",
+    "productivity",
+    "chemical",
+    "manufacturing",
+    "trading"
+  ],
   "screenshots": [
     {
       "src": "/images/screenshot-mobile.png",
@@ -36,7 +42,7 @@
       "type": "image/png"
     },
     {
-      "src": "/images/screenshot-desktop.png", 
+      "src": "/images/screenshot-desktop.png",
       "sizes": "1280x720",
       "type": "image/png"
     }
@@ -49,7 +55,7 @@
       "url": "/products",
       "icons": [
         {
-          "src": "/images/logos/logo.svg",
+          "src": "/images/logos/Tryan-blue.svg",
           "sizes": "96x96"
         }
       ]
@@ -61,10 +67,10 @@
       "url": "/contact",
       "icons": [
         {
-          "src": "/images/logos/logo.svg", 
+          "src": "/images/logos/Tryan-blue.svg",
           "sizes": "96x96"
         }
       ]
     }
   ]
-} 
+}

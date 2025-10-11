@@ -15,7 +15,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
-import Logo from "../../../public/images/logos/logo-white.svg";
+import Logo from "../../../public/images/logos/Trayan-white-3.png";
 
 const Footer = () => {
   const navigation = [
@@ -27,7 +27,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#001532] text-white pt-16 pb-8">
+    <footer className="bg-primary-600 text-white pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Top section with logo and newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 pb-10 border-b border-gray-800">
@@ -36,13 +36,10 @@ const Footer = () => {
               <Image
                 src={Logo}
                 alt="Trayan Corp Logo"
-                width={100}
-                height={100}
-                className="h-10 w-auto"
+                width={300}
+                height={300}
+                className="h-30 w-auto"
               />
-              <span className="text-xl sm:text-2xl font-heading font-bold text-white">
-                Trayan Corporation
-              </span>
             </Link>
             <p className="text-gray-400 mb-6">
               Your trusted partner in chemical trading and manufacturing

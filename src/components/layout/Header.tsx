@@ -7,7 +7,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useEnquiry } from "@/contexts/EnquiryContext";
-import Logo from "../../../public/images/logos/logo.svg";
+import Logo from "../../../public/images/logos/Trayan-blue.svg";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -64,18 +64,10 @@ const Header = () => {
                   alt="Trayan Corp Logo"
                   width={100}
                   height={100}
-                  className="h-8 sm:h-10 w-auto"
+                  className="h-8 sm:h-12 w-auto"
                   style={{ filter: "none" }}
                 />
               </motion.div>
-              <motion.span
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-primary-600 truncate"
-              >
-                Trayan Corporation
-              </motion.span>
             </Link>
           </div>
           <div className="flex lg:hidden">
@@ -106,7 +98,7 @@ const Header = () => {
                 >
                   <Link
                     href={item.href}
-                    className="relative text-sm font-semibold leading-6 text-gray-800 transition-all duration-200 hover:text-primary-600 group"
+                    className="relative text-lg font-semibold leading-6 text-gray-800 transition-all duration-200 hover:text-primary-600 group"
                   >
                     {item.name}
                     {isActive && (

@@ -154,7 +154,7 @@ const Home = () => {
         description="Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat, India. Specializing in industrial chemicals, solvents, additives & raw materials. Trusted chemical supplier with 5+ years experience. Call +91 87809 98478"
         canonical="/"
         pageType="website"
-        imageUrl="/images/logos/logo.svg"
+        imageUrl="/images/logos/Tryan-blue.svg"
         structuredData={{
           type: "WebSite",
           data: {
@@ -182,9 +182,9 @@ const Home = () => {
             description:
               "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, India. We specialize in sourcing, supplying, and distributing high-quality industrial chemicals, solvents, additives, and raw materials for various industries across India and internationally.",
             url: "https://trayancorp.com",
-            logo: "https://trayancorp.com/images/logos/logo.svg",
+            logo: "https://trayancorp.com/images/logos/Tryan-blue.svg",
             image: [
-              "https://trayancorp.com/images/logos/logo.svg",
+              "https://trayancorp.com/images/logos/Tryan-blue.svg",
               "https://trayancorp.com/images/chemical-industry-hero.jpg",
               "https://trayancorp.com/images/chemicals-lab.jpg",
             ],
@@ -427,8 +427,8 @@ const Home = () => {
             description:
               "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, specializing in sourcing, supplying, and distributing high-quality chemicals for various industries across India and internationally.",
             url: "https://trayancorp.com",
-            logo: "https://trayancorp.com/images/logos/logo.svg",
-            image: "https://trayancorp.com/images/logos/logo.svg",
+            logo: "https://trayancorp.com/images/logos/Tryan-blue.svg",
+            image: "https://trayancorp.com/images/logos/Tryan-blue.svg",
             telephone: "+91 87809 98478",
             email: "info@trayancorp.com",
             foundingDate: "2020",

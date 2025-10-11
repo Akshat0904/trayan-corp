@@ -21,7 +21,7 @@ const SEO: React.FC<SEOProps> = ({
   description,
   canonical = "/",
   pageType = "website",
-  imageUrl = "/images/logos/logo.svg",
+  imageUrl = "/images/logos/Tryan-blue.svg",
   structuredData,
 }) => {
   // Ensure canonical URL is always absolute
@@ -29,7 +29,7 @@ const SEO: React.FC<SEOProps> = ({
     ? canonical
     : `https://trayancorp.com${canonical}`;
 
-  // Ensure image URL is always absolute  
+  // Ensure image URL is always absolute
   const fullImageUrl = imageUrl.startsWith("http")
     ? imageUrl
     : `https://trayancorp.com${imageUrl}`;
@@ -39,66 +39,73 @@ const SEO: React.FC<SEOProps> = ({
     document.title = title;
 
     // Set or update canonical link
-    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    let canonicalLink = document.querySelector(
+      'link[rel="canonical"]'
+    ) as HTMLLinkElement;
     if (canonicalLink) {
       canonicalLink.href = fullCanonical;
     } else {
-      canonicalLink = document.createElement('link');
-      canonicalLink.rel = 'canonical';
+      canonicalLink = document.createElement("link");
+      canonicalLink.rel = "canonical";
       canonicalLink.href = fullCanonical;
       document.head.appendChild(canonicalLink);
     }
 
     // Set or update meta description
-    let metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+    let metaDescription = document.querySelector(
+      'meta[name="description"]'
+    ) as HTMLMetaElement;
     if (metaDescription) {
       metaDescription.content = description;
     } else {
-      metaDescription = document.createElement('meta');
-      metaDescription.name = 'description';
+      metaDescription = document.createElement("meta");
+      metaDescription.name = "description";
       metaDescription.content = description;
       document.head.appendChild(metaDescription);
     }
 
     // Set or update Open Graph tags
     const setMetaProperty = (property: string, content: string) => {
-      let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement;
+      let meta = document.querySelector(
+        `meta[property="${property}"]`
+      ) as HTMLMetaElement;
       if (meta) {
         meta.content = content;
       } else {
-        meta = document.createElement('meta');
-        meta.setAttribute('property', property);
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
         meta.content = content;
         document.head.appendChild(meta);
       }
     };
 
-    setMetaProperty('og:title', title);
-    setMetaProperty('og:description', description);
-    setMetaProperty('og:url', fullCanonical);
-    setMetaProperty('og:image', fullImageUrl);
-    setMetaProperty('og:type', pageType);
-    setMetaProperty('og:site_name', 'Trayan Corporation');
-    setMetaProperty('og:locale', 'en_US');
+    setMetaProperty("og:title", title);
+    setMetaProperty("og:description", description);
+    setMetaProperty("og:url", fullCanonical);
+    setMetaProperty("og:image", fullImageUrl);
+    setMetaProperty("og:type", pageType);
+    setMetaProperty("og:site_name", "Trayan Corporation");
+    setMetaProperty("og:locale", "en_US");
 
     // Set or update Twitter tags
     const setMetaName = (name: string, content: string) => {
-      let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement;
+      let meta = document.querySelector(
+        `meta[name="${name}"]`
+      ) as HTMLMetaElement;
       if (meta) {
         meta.content = content;
       } else {
-        meta = document.createElement('meta');
+        meta = document.createElement("meta");
         meta.name = name;
         meta.content = content;
         document.head.appendChild(meta);
       }
     };
 
-    setMetaName('twitter:card', 'summary_large_image');
-    setMetaName('twitter:title', title);
-    setMetaName('twitter:description', description);
-    setMetaName('twitter:image', fullImageUrl);
-
+    setMetaName("twitter:card", "summary_large_image");
+    setMetaName("twitter:title", title);
+    setMetaName("twitter:description", description);
+    setMetaName("twitter:image", fullImageUrl);
   }, [title, description, fullCanonical, fullImageUrl, pageType]);
 
   return (

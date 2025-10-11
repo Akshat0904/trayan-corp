@@ -282,7 +282,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteUrl}/images/logos/logo.svg`,
+        url: `${siteUrl}/images/logos/Tryan-blue.svg`,
         width: 1200,
         height: 630,
         alt: "Trayan Corporation - Chemical Trading & Manufacturing Company Ahmedabad Gujarat",
@@ -300,17 +300,17 @@ export const metadata: Metadata = {
     title: "Trayan Corporation | Chemical Trading Company Ahmedabad",
     description:
       "Leading chemical trading & manufacturing company in Ahmedabad, Gujarat. Industrial chemicals, solvents, additives & raw materials. Call +91 87809 98478",
-    images: [`${siteUrl}/images/logos/logo.svg`],
+    images: [`${siteUrl}/images/logos/Tryan-blue.svg`],
     site: "@trayancorp",
     creator: "@trayancorp",
   },
   icons: {
     icon: [
-      { url: "/images/logos/logo.svg", type: "image/svg+xml" },
+      { url: "/images/logos/Tryan-blue.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/images/logos/logo.svg",
-    shortcut: "/images/logos/logo.svg",
+    apple: "/images/logos/Tryan-blue.svg",
+    shortcut: "/images/logos/Tryan-blue.svg",
   },
 };
 
@@ -445,9 +445,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               description:
                 "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, India. We specialize in sourcing, supplying, and distributing high-quality industrial chemicals, solvents, additives, and raw materials for various industries across India and internationally.",
               url: siteUrl,
-              logo: `${siteUrl}/images/logos/logo.svg`,
+              logo: `${siteUrl}/images/logos/Tryan-blue.svg`,
               image: [
-                `${siteUrl}/images/logos/logo.svg`,
+                `${siteUrl}/images/logos/Tryan-blue.svg`,
                 `${siteUrl}/images/chemical-industry-hero.jpg`,
                 `${siteUrl}/images/chemicals-lab.jpg`,
               ],
@@ -618,8 +618,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               description:
                 "Trayan Corporation is a leading chemical trading and manufacturing company based in Ahmedabad, Gujarat, specializing in sourcing, supplying, and distributing high-quality chemicals for various industries across India and internationally.",
               url: siteUrl,
-              logo: `${siteUrl}/images/logos/logo.svg`,
-              image: `${siteUrl}/images/logos/logo.svg`,
+              logo: `${siteUrl}/images/logos/Tryan-blue.svg`,
+              image: `${siteUrl}/images/logos/Tryan-blue.svg`,
               telephone: "+91 87809 98478",
               email: "info@trayancorp.com",
               foundingDate: "2020",
