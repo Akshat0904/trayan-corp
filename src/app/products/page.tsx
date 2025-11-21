@@ -10,6 +10,7 @@ import { findProductBySlug, generateProductSlug } from "@/utils/productUtils";
 
 const ProductsContent = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -393,25 +394,81 @@ const ProductsContent = () => {
               to your specific needs.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
-              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
+              <button
+                onClick={() => {
+                  setActiveCategory("STRONG ACIDS");
+                  setTimeout(() => {
+                    document
+                      .getElementById("products-section")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }, 100);
+                }}
+                className={`backdrop-blur-sm border text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeCategory === "STRONG ACIDS"
+                    ? "bg-white/30 border-white/40 shadow-lg"
+                    : "bg-white/10 border-white/20 hover:bg-white/20"
+                }`}
+              >
                 {products.filter((p) => p.category === "STRONG ACIDS").length}{" "}
                 Strong Acids
-              </span>
-              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
+              </button>
+              <button
+                onClick={() => {
+                  setActiveCategory("BASIC CHEMICAL");
+                  setTimeout(() => {
+                    document
+                      .getElementById("products-section")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }, 100);
+                }}
+                className={`backdrop-blur-sm border text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeCategory === "BASIC CHEMICAL"
+                    ? "bg-white/30 border-white/40 shadow-lg"
+                    : "bg-white/10 border-white/20 hover:bg-white/20"
+                }`}
+              >
                 {products.filter((p) => p.category === "BASIC CHEMICAL").length}{" "}
                 Basic Chemicals
-              </span>
-              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
+              </button>
+              <button
+                onClick={() => {
+                  setActiveCategory("INORGANIC CHEMICAL");
+                  setTimeout(() => {
+                    document
+                      .getElementById("products-section")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }, 100);
+                }}
+                className={`backdrop-blur-sm border text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeCategory === "INORGANIC CHEMICAL"
+                    ? "bg-white/30 border-white/40 shadow-lg"
+                    : "bg-white/10 border-white/20 hover:bg-white/20"
+                }`}
+              >
                 {
                   products.filter((p) => p.category === "INORGANIC CHEMICAL")
                     .length
                 }{" "}
                 Inorganic Chemicals
-              </span>
-              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
-                {products.filter((p) => p.category === "SOLVENTS").length}{" "}
-                Solvents
-              </span>
+              </button>
+              <button
+                onClick={() => {
+                  setActiveCategory("OTHER CHEMICAL");
+                  setTimeout(() => {
+                    document
+                      .getElementById("products-section")
+                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }, 100);
+                }}
+                className={`backdrop-blur-sm border text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  activeCategory === "OTHER CHEMICAL"
+                    ? "bg-white/30 border-white/40 shadow-lg"
+                    : "bg-white/10 border-white/20 hover:bg-white/20"
+                }`}
+              >
+                {products.filter((p) => p.category === "OTHER CHEMICAL").length}{" "}
+                Other Chemicals
+              </button>
             </div>
             {/* <div className="flex flex-wrap gap-4">
               <button className="bg-white text-primary-700 px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors duration-300">
@@ -425,11 +482,14 @@ const ProductsContent = () => {
         </div>
       </div>
 
-      <ProductShowcase
-        selectedProduct={selectedProduct}
-        onProductSelect={handleProductSelect}
-        onModalClose={handleModalClose}
-      />
+      <div id="products-section">
+        <ProductShowcase
+          selectedProduct={selectedProduct}
+          onProductSelect={handleProductSelect}
+          onModalClose={handleModalClose}
+          initialCategory={activeCategory}
+        />
+      </div>
 
       {/* Featured Products Section
       <div className="bg-white py-16">

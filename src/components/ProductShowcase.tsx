@@ -9,14 +9,21 @@ interface ProductShowcaseProps {
   selectedProduct?: Product | null;
   onProductSelect?: (product: Product) => void;
   onModalClose?: () => void;
+  initialCategory?: string;
 }
 
 const ProductShowcase: React.FC<ProductShowcaseProps> = ({
   selectedProduct = null,
   onProductSelect,
   onModalClose,
+  initialCategory = "all",
 }) => {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
+
+  // Sync activeCategory with initialCategory prop
+  React.useEffect(() => {
+    setActiveCategory(initialCategory);
+  }, [initialCategory]);
 
   const filteredProducts =
     activeCategory === "all"
@@ -153,165 +160,136 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
 
         {/* Product Detail Modal */}
         {selectedProduct && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-white rounded-md max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
             >
               <div className="relative">
-                <div
-                  className={`h-32 w-full flex items-center justify-center relative
-                  ${
-                    selectedProduct.category === "STRONG ACIDS"
-                      ? "bg-gradient-to-r from-red-100 to-red-50"
-                      : ""
-                  }
-                  ${
-                    selectedProduct.category === "BASIC CHEMICAL"
-                      ? "bg-gradient-to-r from-blue-100 to-blue-50"
-                      : ""
-                  }
-                  ${
-                    selectedProduct.category === "INORGANIC CHEMICAL"
-                      ? "bg-gradient-to-r from-green-100 to-green-50"
-                      : ""
-                  }
-                  ${
-                    selectedProduct.category === "OTHER CHEMICAL"
-                      ? "bg-gradient-to-r from-purple-100 to-purple-50"
-                      : ""
-                  }
-                `}
-                >
-                  <div className="flex flex-col items-center justify-center">
-                    <FaFlask
-                      className={`text-5xl mb-2
-                      ${
-                        selectedProduct.category === "STRONG ACIDS"
-                          ? "text-red-400"
-                          : ""
-                      }
-                      ${
-                        selectedProduct.category === "BASIC CHEMICAL"
-                          ? "text-blue-400"
-                          : ""
-                      }
-                      ${
-                        selectedProduct.category === "INORGANIC CHEMICAL"
-                          ? "text-green-400"
-                          : ""
-                      }
-                      ${
-                        selectedProduct.category === "OTHER CHEMICAL"
-                          ? "text-purple-400"
-                          : ""
-                      }
-                    `}
+                {/* Header with gradient background */}
+                <div className="relative h-48 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden">
+                  {/* Animated pattern overlay */}
+                  <div className="absolute inset-0 opacity-10">
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+                        backgroundSize: "30px 30px",
+                      }}
+                    ></div>
+                  </div>
+
+                  {/* Floating shapes */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <motion.div
+                      animate={{
+                        y: [0, -10, 0],
+                        rotate: [0, 5, 0],
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="absolute top-10 right-10 w-32 h-32 bg-primary-600/20 rounded-full blur-2xl"
+                    />
+                    <motion.div
+                      animate={{
+                        y: [0, 15, 0],
+                        rotate: [0, -5, 0],
+                      }}
+                      transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="absolute bottom-10 left-10 w-40 h-40 bg-accent-500/10 rounded-full blur-2xl"
                     />
                   </div>
-                </div>
-                <div className="p-6">
-                  <div className="mb-2">
-                    <span
-                      className={`text-xs font-medium px-2.5 py-0.5 rounded-full
-                      ${
-                        selectedProduct.category === "STRONG ACIDS"
-                          ? "bg-red-100 text-red-800"
-                          : ""
-                      }
-                      ${
-                        selectedProduct.category === "BASIC CHEMICAL"
-                          ? "bg-blue-100 text-blue-800"
-                          : ""
-                      }
-                      ${
-                        selectedProduct.category === "INORGANIC CHEMICAL"
-                          ? "bg-green-100 text-green-800"
-                          : ""
-                      }
-                      ${
-                        selectedProduct.category === "OTHER CHEMICAL"
-                          ? "bg-purple-100 text-purple-800"
-                          : ""
-                      }
-                    `}
-                    >
+
+                  {/* Content */}
+                  <div className="relative flex flex-col items-center justify-center h-full text-center px-6">
+                    <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4 border border-white/20">
+                      <FaFlask className="text-4xl text-white" />
+                    </div>
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-accent-400/20 border border-accent-400/30 text-accent-300 text-xs font-semibold uppercase tracking-wide">
                       {selectedProduct.category}
                     </span>
                   </div>
-                  <h2
-                    className={`text-2xl font-bold mb-4
-                    ${
-                      selectedProduct.category === "STRONG ACIDS"
-                        ? "text-red-900"
-                        : ""
-                    }
-                    ${
-                      selectedProduct.category === "BASIC CHEMICAL"
-                        ? "text-blue-900"
-                        : ""
-                    }
-                    ${
-                      selectedProduct.category === "INORGANIC CHEMICAL"
-                        ? "text-green-900"
-                        : ""
-                    }
-                    ${
-                      selectedProduct.category === "OTHER CHEMICAL"
-                        ? "text-purple-900"
-                        : ""
-                    }
-                  `}
+
+                  {/* Close button */}
+                  <button
+                    onClick={() => onModalClose?.()}
+                    className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-full p-2.5 transition-all duration-200 border border-white/20 hover:border-white/30 group"
                   >
+                    <svg
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Content */}
+                <div className="p-8 overflow-y-auto max-h-[calc(90vh-12rem)]">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4 font-heading">
                     {selectedProduct.name}
                   </h2>
-                  <p
-                    className={`text-gray-700 mb-6 border-l-4 pl-4 py-2 italic bg-gray-50
-                    ${
-                      selectedProduct.category === "STRONG ACIDS"
-                        ? "border-red-300"
-                        : ""
-                    }
-                    ${
-                      selectedProduct.category === "BASIC CHEMICAL"
-                        ? "border-blue-300"
-                        : ""
-                    }
-                    ${
-                      selectedProduct.category === "INORGANIC CHEMICAL"
-                        ? "border-green-300"
-                        : ""
-                    }
-                    ${
-                      selectedProduct.category === "OTHER CHEMICAL"
-                        ? "border-purple-300"
-                        : ""
-                    }
-                  `}
-                  >
-                    {selectedProduct.description}
-                  </p>
+
+                  <div className="bg-primary-50 border-l-4 border-primary-600 p-4 rounded-r-lg mb-6">
+                    <p className="text-gray-700 leading-relaxed">
+                      {selectedProduct.description}
+                    </p>
+                  </div>
+
+                  {/* Product Details */}
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="text-sm text-gray-500 mb-1">
+                        Availability
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-gray-900 font-semibold">
+                          In Stock
+                        </span>
+                      </div>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="text-sm text-gray-500 mb-1">Quality</div>
+                      <div className="text-gray-900 font-semibold">
+                        ISO 9001 Certified
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="flex gap-3">
+                    <a
+                      href="/contact"
+                      className="flex-1 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-300 text-center shadow-lg hover:shadow-xl"
+                    >
+                      Request Quote
+                    </a>
+                    <a
+                      href="tel:+918780998478"
+                      className="flex-1 border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-all duration-300 text-center"
+                    >
+                      Call Now
+                    </a>
+                  </div>
                 </div>
-                <button
-                  onClick={() => onModalClose?.()}
-                  className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md"
-                >
-                  <svg
-                    className="h-5 w-5 text-gray-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
               </div>
             </motion.div>
           </div>
