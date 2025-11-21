@@ -21,7 +21,7 @@ const SEO: React.FC<SEOProps> = ({
   description,
   canonical = "/",
   pageType = "website",
-  imageUrl = "/images/logos/Tryan-blue.svg",
+  imageUrl = "/images/logos/Trayan-blue.jpg",
   structuredData,
 }) => {
   // Ensure canonical URL is always absolute
@@ -33,7 +33,7 @@ const SEO: React.FC<SEOProps> = ({
   const fullImageUrl =
     imageUrl && typeof imageUrl === "string" && imageUrl.startsWith("http")
       ? imageUrl
-      : `https://trayancorp.com${imageUrl || "/images/logos/Tryan-blue.svg"}`;
+      : `https://trayancorp.com${imageUrl || "/images/logos/Trayan-blue.jpg"}`;
 
   useEffect(() => {
     // Set page title

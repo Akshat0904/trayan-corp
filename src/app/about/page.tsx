@@ -252,7 +252,7 @@ const AboutPage = () => {
               url: "https://trayancorp.com",
               logo: {
                 "@type": "ImageObject",
-                url: "https://trayancorp.com/images/logos/Tryan-blue.svg",
+                url: "https://trayancorp.com/images/logos/Trayan-blue.jpg",
                 width: 400,
                 height: 400,
               },
@@ -265,7 +265,7 @@ const AboutPage = () => {
             },
             image: {
               "@type": "ImageObject",
-              url: "https://trayancorp.com/images/logos/Tryan-blue.svg",
+              url: "https://trayancorp.com/images/logos/Trayan-blue.jpg",
               width: 400,
               height: 400,
             },
