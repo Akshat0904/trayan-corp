@@ -338,42 +338,77 @@ const ProductsContent = () => {
         }}
       />
 
-      <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white py-10 md:py-24">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
+      <div className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white py-10 md:py-24 overflow-hidden">
+        {/* Animated pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+              backgroundSize: "30px 30px",
+            }}
+          ></div>
+        </div>
+
+        {/* Floating shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 5, 0],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 right-20 w-48 h-48 bg-primary-600/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              y: [0, 30, 0],
+              rotate: [0, -10, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-20 left-20 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl"
+          />
+        </div>
+
         <div className="container mx-auto mt-12 md:mt-5 px-6 max-w-7xl relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl md:text-5xl mt-5 md:mt-0 font-bold mb-6 font-heading">
-              Chemical Products <br />
-              <span className="text-primary-300">For Every Industry</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-accent-400/20 border border-accent-400/30 text-accent-300 text-sm font-semibold mb-6">
+              Our Products
+            </span>
+            <h1 className="text-4xl md:text-6xl mt-5 md:mt-0 font-bold mb-6 font-heading leading-tight">
+              Chemical Products{" "}
+              <span className="block bg-gradient-to-r from-primary-300 to-accent-300 bg-clip-text text-transparent">
+                For Every Industry
+              </span>
             </h1>
-            <p className="text-lg text-gray-200 mb-4">
+            <p className="text-xl text-primary-100 mb-8 leading-relaxed">
               Discover our comprehensive range of high-quality chemical products
               designed to meet the demands of modern industries. From industrial
               solvents to specialized additives, we provide solutions tailored
               to your specific needs.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2 text-sm">
-              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+            <div className="mt-6 flex flex-wrap gap-3 text-sm">
+              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
                 {products.filter((p) => p.category === "STRONG ACIDS").length}{" "}
                 Strong Acids
               </span>
-              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
                 {products.filter((p) => p.category === "BASIC CHEMICAL").length}{" "}
                 Basic Chemicals
               </span>
-              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
                 {
                   products.filter((p) => p.category === "INORGANIC CHEMICAL")
                     .length
                 }{" "}
                 Inorganic Chemicals
               </span>
-              <span className="bg-primary-600/30 text-primary-100 px-3 py-1 rounded-full">
+              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 cursor-pointer">
                 {products.filter((p) => p.category === "SOLVENTS").length}{" "}
                 Solvents
               </span>

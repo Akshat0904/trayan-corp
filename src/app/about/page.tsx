@@ -14,7 +14,7 @@ const AboutPage = () => {
       {
         name: "keywords",
         content:
-          "About Trayan Corporation, chemical company history Ahmedabad, chemical trading company founded 2020, Gujarat chemical manufacturer, industrial chemicals supplier background, chemical business Ahmedabad Gujarat, Trayan Corp company profile, chemical solutions provider India, established chemical trading company, experienced chemical manufacturer Ahmedabad, chemical industry expertise Gujarat, Talod GIDC manufacturing facility, chemical supply chain management, quality chemical supplier, trusted chemical partner, ISO certified chemical company, chemical trading license, import export chemical business, Skywalk Elements chemical company, Gota Ahmedabad chemical trading, SG Highway chemical supplier, company story chemical industry, chemical business journey, chemical manufacturing expertise, industrial chemical experience, chemical trading background, Ahmedabad chemical company profile, Gujarat chemical business history, chemical industry leaders, chemical solutions experience",
+          "About Trayan Corporation, chemical company history Ahmedabad, chemical trading company founded 2020, Gujarat chemical manufacturer, industrial chemicals supplier background, chemical business Ahmedabad Gujarat, Trayan Corp company profile, chemical solutions provider India, established chemical trading company, experienced chemical manufacturer Ahmedabad, chemical industry expertise Gujarat, Talod GIDC manufacturing facility, chemical supply chain management, quality chemical supplier, reliable chemistry, ISO certified chemical company, chemical trading license, import export chemical business, Skywalk Elements chemical company, Gota Ahmedabad chemical trading, SG Highway chemical supplier, company story chemical industry, chemical business journey, chemical manufacturing expertise, industrial chemical experience, chemical trading background, Ahmedabad chemical company profile, Gujarat chemical business history, chemical industry leaders, chemical solutions experience",
       },
 
       // About Page Classification
@@ -104,16 +104,6 @@ const AboutPage = () => {
       }
     });
   }, []);
-
-  // Animation variants
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
 
   const services = [
     {
@@ -223,8 +213,7 @@ const AboutPage = () => {
                 "Chemical Trading License",
                 "Import Export License",
               ],
-              slogan:
-                "Your trusted partner in chemical trading and manufacturing solutions",
+              slogan: "Reliable Chemistry",
             },
           }),
         }}
@@ -330,27 +319,58 @@ const AboutPage = () => {
       />
 
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-primary-700 to-primary-600 text-white">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
+      <div className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white overflow-hidden">
+        {/* Animated pattern overlay */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+              backgroundSize: "30px 30px",
+            }}
+          ></div>
+        </div>
+
+        {/* Floating shapes */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 5, 0],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 right-20 w-48 h-48 bg-primary-600/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              y: [0, 30, 0],
+              rotate: [0, -10, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-20 left-20 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl"
+          />
+        </div>
+
         <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold mb-6"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            About Trayan Corporation
-          </motion.h1>
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ delay: 0.2 }}
-            className="text-xl max-w-3xl leading-relaxed"
-          >
-            Your trusted partner in chemical merchandise since many years,
-            delivering quality products and solutions to businesses worldwide.
-          </motion.p>
+            <span className="inline-block px-4 py-2 rounded-full bg-accent-400/20 border border-accent-400/30 text-accent-300 text-sm font-semibold mb-6">
+              About Us
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              About{" "}
+              <span className="bg-gradient-to-r from-primary-300 to-accent-300 bg-clip-text text-transparent">
+                Trayan Corporation
+              </span>
+            </h1>
+            <p className="text-xl text-primary-100 max-w-3xl leading-relaxed">
+              Reliable Chemistry - delivering quality products and solutions to
+              businesses worldwide since many years.
+            </p>
+          </motion.div>
         </div>
       </div>
 

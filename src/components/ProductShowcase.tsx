@@ -38,11 +38,11 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
         {/* Category Filter */}
         <div className="mt-10 flex flex-wrap justify-center gap-2">
           <button
-            className={`px-4 py-2 rounded-full text-sm font-medium ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
               activeCategory === "all"
-                ? "bg-primary-600 text-white"
-                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-            } transition-colors duration-200`}
+                ? "bg-primary-600 text-white shadow-sm"
+                : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300"
+            }`}
             onClick={() => setActiveCategory("all")}
           >
             All Products
@@ -50,11 +50,11 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
           {productCategories.map((category) => (
             <button
               key={category}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeCategory === category
-                  ? "bg-primary-600 text-white"
-                  : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-              } transition-colors duration-200`}
+                  ? "bg-primary-600 text-white shadow-sm"
+                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300"
+              }`}
               onClick={() => setActiveCategory(category)}
             >
               {category}
@@ -65,7 +65,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
         {/* Products Grid */}
         <motion.div
           layout
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
         >
           {filteredProducts.map((product) => (
             <motion.article
@@ -75,162 +75,58 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: (product.id * 0.05) % 0.5 }}
-              className="flex flex-col items-start bg-white rounded-md shadow-soft overflow-hidden hover:shadow-hard hover:shadow-glow transition-all duration-300 h-full border border-gray-100"
+              className="group relative bg-white rounded-xl border border-gray-200 hover:border-primary-400 transition-all duration-300 h-full cursor-pointer overflow-hidden"
               onClick={() => onProductSelect?.(product)}
             >
-              <div className="w-full">
-                <div
-                  className={`h-24 w-full flex items-center justify-center relative overflow-hidden
-                  ${
-                    product.category === "STRONG ACIDS"
-                      ? "bg-gradient-to-r from-red-50 to-orange-50"
-                      : ""
-                  }
-                  ${
-                    product.category === "BASIC CHEMICAL"
-                      ? "bg-gradient-to-r from-blue-50 to-indigo-50"
-                      : ""
-                  }
-                  ${
-                    product.category === "INORGANIC CHEMICAL"
-                      ? "bg-gradient-to-r from-green-50 to-teal-50"
-                      : ""
-                  }
-                  ${
-                    product.category === "OTHER CHEMICAL"
-                      ? "bg-gradient-to-r from-purple-50 to-pink-50"
-                      : ""
-                  }
-                `}
-                >
-                  <div className="absolute top-0 right-0 m-2">
-                    <span
-                      className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium
-                      ${
-                        product.category === "STRONG ACIDS"
-                          ? "bg-red-100 text-red-800"
-                          : ""
-                      }
-                      ${
-                        product.category === "BASIC CHEMICAL"
-                          ? "bg-blue-100 text-blue-800"
-                          : ""
-                      }
-                      ${
-                        product.category === "INORGANIC CHEMICAL"
-                          ? "bg-green-100 text-green-800"
-                          : ""
-                      }
-                      ${
-                        product.category === "OTHER CHEMICAL"
-                          ? "bg-purple-100 text-purple-800"
-                          : ""
-                      }
-                    `}
-                    >
-                      {product.category}
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <FaFlask
-                      className={`text-3xl mb-1
-                      ${
-                        product.category === "STRONG ACIDS"
-                          ? "text-red-300"
-                          : ""
-                      }
-                      ${
-                        product.category === "BASIC CHEMICAL"
-                          ? "text-blue-300"
-                          : ""
-                      }
-                      ${
-                        product.category === "INORGANIC CHEMICAL"
-                          ? "text-green-300"
-                          : ""
-                      }
-                      ${
-                        product.category === "OTHER CHEMICAL"
-                          ? "text-purple-300"
-                          : ""
-                      }
-                    `}
-                    />
-                    <div
-                      className={`text-sm font-semibold
-                      ${
-                        product.category === "STRONG ACIDS"
-                          ? "text-red-700"
-                          : ""
-                      }
-                      ${
-                        product.category === "BASIC CHEMICAL"
-                          ? "text-blue-700"
-                          : ""
-                      }
-                      ${
-                        product.category === "INORGANIC CHEMICAL"
-                          ? "text-green-700"
-                          : ""
-                      }
-                      ${
-                        product.category === "OTHER CHEMICAL"
-                          ? "text-purple-700"
-                          : ""
-                      }
-                    `}
-                    >
-                      Chemical
+              {/* Accent bar on left */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-600 transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
+
+              <div className="p-6 flex flex-col h-full">
+                {/* Header with icon and category */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary-100 transition-colors duration-300">
+                      <FaFlask className="text-xl text-primary-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="inline-block text-xs font-medium text-gray-500 uppercase tracking-wide">
+                        {product.category}
+                      </span>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="p-4 flex flex-col flex-grow w-full">
-                <div className="flex items-center gap-x-4 text-xs mb-1">
-                  <span className="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-sm">
-                    Available Now
-                  </span>
-                </div>
-                <div className="group flex-grow">
-                  <h3 className="text-base font-bold leading-6 text-gray-900 group-hover:text-primary-600 line-clamp-2 h-12">
-                    {product.name}
-                  </h3>
-                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-gray-600 h-[4.5rem]">
-                    {product.description}
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center">
+
+                {/* Product name */}
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-200 line-clamp-2 mb-3 min-h-[3.5rem]">
+                  {product.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-gray-600 line-clamp-3 flex-grow mb-4 leading-relaxed">
+                  {product.description}
+                </p>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-4 mt-auto border-t border-gray-100">
+                  {/* Availability */}
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-xs font-medium text-gray-600">
+                      In Stock
+                    </span>
+                  </div>
+
+                  {/* View button */}
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       onProductSelect?.(product);
                     }}
-                    className={`text-sm font-semibold flex items-center rounded-full px-3 py-1
-                      ${
-                        product.category === "STRONG ACIDS"
-                          ? "text-red-600 hover:bg-red-50"
-                          : ""
-                      }
-                      ${
-                        product.category === "BASIC CHEMICAL"
-                          ? "text-blue-600 hover:bg-blue-50"
-                          : ""
-                      }
-                      ${
-                        product.category === "INORGANIC CHEMICAL"
-                          ? "text-green-600 hover:bg-green-50"
-                          : ""
-                      }
-                      ${
-                        product.category === "OTHER CHEMICAL"
-                          ? "text-purple-600 hover:bg-purple-50"
-                          : ""
-                      }
-                    `}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-primary-600 hover:text-white bg-primary-50 hover:bg-primary-600 rounded-lg transition-all duration-200"
                   >
                     Details
                     <svg
-                      className="ml-1 h-4 w-4"
+                      className="w-3.5 h-3.5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

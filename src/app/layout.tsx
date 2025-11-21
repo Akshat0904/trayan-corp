@@ -275,7 +275,7 @@ export const metadata: Metadata = {
     title:
       "Trayan Corporation | Leading Chemical Trading & Manufacturing Company in Ahmedabad",
     description:
-      "Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat. Specializing in industrial chemicals, solvents, additives & raw materials. Trusted partner for 5+ years.",
+      "Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat. Specializing in industrial chemicals, solvents, additives & raw materials. Reliable Chemistry for 5+ years.",
     url: siteUrl,
     siteName: "Trayan Corporation",
     locale: "en_US",
@@ -457,8 +457,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               telephone: ["+91 87809 98478", "+91 91063 64185"],
               email: "info@trayancorp.com",
               foundingDate: "2020",
-              slogan:
-                "Your trusted partner in chemical trading and manufacturing solutions",
+              slogan: "Reliable Chemistry",
               priceRange: "$$",
               currenciesAccepted: ["INR", "USD", "EUR"],
               paymentAccepted: [
