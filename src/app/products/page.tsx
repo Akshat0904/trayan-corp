@@ -160,13 +160,6 @@ const ProductsContent = () => {
                   name: "Trayan Corporation",
                 },
               },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: 4.5,
-                reviewCount: 25,
-                bestRating: 5,
-                worstRating: 1,
-              },
             }),
           }}
         />
@@ -207,23 +200,6 @@ const ProductsContent = () => {
                   name: "Trayan Corporation",
                   url: "https://trayancorp.com",
                 },
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: 4.5,
-                  reviewCount: 25,
-                  bestRating: 5,
-                  worstRating: 1,
-                },
-                review: [
-                  {
-                    "@type": "Review",
-                    author: {
-                      "@type": "Organization",
-                      name: "Industrial Chemical Users",
-                    },
-                    reviewBody: `High-quality ${product.name.toLowerCase()} with consistent performance and reliable supply chain.`,
-                  },
-                ],
                 additionalProperty: [
                   {
                     "@type": "PropertyValue",
