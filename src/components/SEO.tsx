@@ -30,9 +30,10 @@ const SEO: React.FC<SEOProps> = ({
     : `https://trayancorp.com${canonical}`;
 
   // Ensure image URL is always absolute
-  const fullImageUrl = imageUrl.startsWith("http")
-    ? imageUrl
-    : `https://trayancorp.com${imageUrl}`;
+  const fullImageUrl =
+    imageUrl && typeof imageUrl === "string" && imageUrl.startsWith("http")
+      ? imageUrl
+      : `https://trayancorp.com${imageUrl || "/images/logos/Tryan-blue.svg"}`;
 
   useEffect(() => {
     // Set page title

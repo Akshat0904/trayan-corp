@@ -13,7 +13,7 @@ import {
   FaShieldAlt,
 } from "react-icons/fa";
 import SEO from "@/components/SEO";
-// import Testimonials from "@/components/Testimonials";
+import TrayanLogo from "../../public/images/logos/Trayan-blue.svg";
 
 const Home = () => {
   const containerRef = useRef(null);
@@ -154,7 +154,7 @@ const Home = () => {
         description="Trayan Corporation - Leading chemical trading and manufacturing company in Ahmedabad, Gujarat, India. Specializing in industrial chemicals, solvents, additives & raw materials. Trusted chemical supplier with 5+ years experience. Call +91 87809 98478"
         canonical="/"
         pageType="website"
-        imageUrl="/images/logos/Tryan-blue.svg"
+        imageUrl={TrayanLogo}
         structuredData={{
           type: "WebSite",
           data: {
