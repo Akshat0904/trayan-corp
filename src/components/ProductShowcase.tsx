@@ -116,12 +116,12 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-4 mt-auto border-t border-gray-100">
                   {/* Availability */}
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span className="text-xs font-medium text-gray-600">
                       In Stock
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* View button */}
                   <button
@@ -259,12 +259,12 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({
                       <div className="text-sm text-gray-500 mb-1">
                         Availability
                       </div>
-                      <div className="flex items-center gap-2">
+                      {/* <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                         <span className="text-gray-900 font-semibold">
                           In Stock
-                        </span>
-                      </div>
+                        </span>SSSS
+                      </div> */}
                     </div>
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <div className="text-sm text-gray-500 mb-1">Quality</div>
