@@ -535,7 +535,7 @@ const AboutPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-xl p-10 text-center"
+          className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white rounded-xl p-10 text-center"
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Partner With Us?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
